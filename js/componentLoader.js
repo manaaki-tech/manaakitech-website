@@ -113,6 +113,16 @@ class ComponentLoader {
   initializeScripts() {
     // Re-initialize any scripts that need to run after components are loaded
     document.dispatchEvent(new Event('componentsLoaded'));
+
+    // Scroll to hash anchor if present (handles cross-page links like /product.html#contact)
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
   }
 }
 

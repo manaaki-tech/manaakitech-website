@@ -29,7 +29,7 @@ This is a company-focused landing page that showcases Manaaki Tech's mission to 
 
 1. **Clone or download the project**
    ```bash
-   cd service-mgmt-landing
+   cd manaakitech-website
    ```
 
 2. **Start the development server**
@@ -48,7 +48,7 @@ This is a company-focused landing page that showcases Manaaki Tech's mission to 
 ### File Structure
 
 ```
-service-mgmt-landing/
+manaakitech-website/
 ├── index.html                 # Main landing page
 ├── support.html              # Support center page
 ├── privacy-policy.html       # Privacy policy

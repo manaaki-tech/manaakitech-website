@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 
-<head id="head-component">
-    <!-- Head content will be loaded here -->
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manaaki Care | Whānau-Centred Management Platform</title>
-    <meta name="description"
-        content="Manaaki Care: A comprehensive case management platform designed with Whānau-centred principles for social services organisations.">
+    <title>Manaaki Tech | Technology & Consulting for Communities</title>
+    <meta name="description" content="Manaaki Tech offers Manaaki Central - a whānau-centred case management platform - and specialist consulting services for SMEs and not-for-profits.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml"
@@ -23,7 +20,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Custom Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -47,207 +43,279 @@
         }
     </script>
 
-    <!-- Custom styles -->
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .btn {
-                @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
-            }
-            .btn-primary {
-                @apply bg-primary-600 text-white hover:bg-primary-700;
-            }
-            .btn-outline {
-                @apply border border-gray-300 hover:bg-gray-50;
-            }
-            .card {
-                @apply bg-white rounded-lg shadow-md p-6;
-            }
+    <style>
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp 0.7s ease-out forwards;
+        }
+        .fade-up-1 { animation-delay: 0.1s; }
+        .fade-up-2 { animation-delay: 0.25s; }
+        .fade-up-3 { animation-delay: 0.4s; }
+        .fade-up-4 { animation-delay: 0.55s; }
+
+        .offering-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .offering-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+        }
+
+        .hero-bg {
+            background: linear-gradient(145deg, #7c2d12 0%, #c2410c 45%, #ea580c 75%, #fb923c 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle wave decoration */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #f9fafb;
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        /* Decorative koru-inspired circles */
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            pointer-events: none;
+        }
+
+        .hero-circle-2 {
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            pointer-events: none;
+        }
+
+        .card-central {
+            background: linear-gradient(145deg, #134e4a 0%, #0f766e 60%, #0d9488 100%);
+            color: white;
+        }
+
+        .card-services {
+            background: linear-gradient(145deg, #78350f 0%, #92400e 60%, #b45309 100%);
+            color: white;
+        }
+
+        .card-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .badge-central {
+            background: rgba(255,255,255,0.15);
+            color: #ccfbf1;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .badge-services {
+            background: rgba(255,255,255,0.15);
+            color: #fef3c7;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .cta-central {
+            background: white;
+            color: #0f766e;
+        }
+        .cta-central:hover {
+            background: #f0fdfa;
+            transform: translateX(3px);
+        }
+
+        .cta-services {
+            background: white;
+            color: #92400e;
+        }
+        .cta-services:hover {
+            background: #fffbeb;
+            transform: translateX(3px);
+        }
+
+        .feature-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-central {
+            background: rgba(255,255,255,0.12);
+            color: #99f6e4;
+        }
+
+        .pill-services {
+            background: rgba(255,255,255,0.12);
+            color: #fcd34d;
         }
     </style>
 </head>
 
-<body style="visibility: hidden;" class="bg-gray-50 text-gray-800 font-sans">
-    <!-- Floating page navigation for larger screens -->
-    <nav class="page-nav">
-        <ul>
-            <li><a href="#overview" class="nav-link">Overview</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#features" class="nav-link">Features</a></li>
-            <li><a href="#benefits" class="nav-link">Benefits</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-    </nav>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
     <div id="header-component" data-component="header"></div>
 
-    <!-- Product Hero Section -->
-    <div id="hero-component" data-component="hero"></div>
-
-    <!-- Product Overview -->
-    <section id="overview" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900">A Client Journey Management Solution, built by the Community for the Community
-                </h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Designed with cultural responsiveness at its
-                    core, Manaaki Care empowers social service providers to deliver better outcomes for whānau.</p>
-            </div>
-
-            <div class="text-center max-w-3xl mx-auto">
-                <h3 class="text-2xl font-bold text-gray-900 mb-8">Why Choose Manaaki Care?</h3>
-                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Our solution combines modern technology with deep cultural understanding to support meaningful connections with families and communities.
-                </p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="text-center">
-                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                            <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Cultural Responsiveness</h4>
-                        <p class="text-sm text-gray-600">Built with cultural values at the foundation</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                            <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Community-Centered</h4>
-                        <p class="text-sm text-gray-600">Designed by and for the community</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                            <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Secure & Compliant</h4>
-                        <p class="text-sm text-gray-600">Enterprise-grade security standards</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                            <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Streamlined Workflows</h4>
-                        <p class="text-sm text-gray-600">Reduces administrative burden</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Hero -->
+    <section class="hero-bg py-20 md:py-28 text-white text-center">
+        <div class="hero-circle-2"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <p class="text-orange-200 text-sm uppercase tracking-widest mb-5 fade-up fade-up-1">Manaaki Tech</p>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up fade-up-2">
+                Technology &amp; Expertise<br>
+                <span class="text-orange-200">for Communities</span>
+            </h1>
+            <p class="text-lg md:text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed fade-up fade-up-3">
+                We build tools and provide support so organisations doing important mahi can focus on what matters most - the people they serve.
+            </p>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Manaaki Tech</h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        Based in New Zealand, Manaaki Tech is committed to creating technology solutions that honor and support 
-                        diverse communities worldwide. Our name "Manaaki" reflects our core values of hospitality, care, and 
-                        respect for all people.
+    <!-- Two Offerings -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-12 fade-up fade-up-1">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">What We Offer</h2>
+                <p class="text-gray-500 text-lg">Two ways we help organisations like yours thrive.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Manaaki Central -->
+                <div class="offering-card card-central rounded-2xl p-8 md:p-10 fade-up fade-up-2">
+                    <div>
+                        <span class="card-badge badge-central">Software Platform</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">Manaaki<br>Central</h2>
+                    <p class="text-teal-100 text-base leading-relaxed mb-6">
+                        A whānau-centred case management platform built for social services organisations. Manage client journeys, reporting, and team workflows - all in one place, with cultural responsiveness at the core.
                     </p>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Manaaki Care represents our first step in revolutionizing how social services connect with and support 
-                        families globally, ensuring cultural values are embedded in every interaction.
-                    </p>
-                    <a href="#contact" class="btn btn-outline text-primary-700 border-primary-700 hover:bg-primary-50 px-6 py-3 text-base">
-                        Contact us
+
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="feature-pill pill-central">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Client Journey Management
+                        </span>
+                        <span class="feature-pill pill-central">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Funder Reporting
+                        </span>
+                        <span class="feature-pill pill-central">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Culturally Responsive
+                        </span>
+                        <span class="feature-pill pill-central">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Secure &amp; Compliant
+                        </span>
+                    </div>
+
+                    <a href="/product.html" class="card-cta cta-central">
+                        Explore Manaaki Central
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
                 </div>
-                <div class="bg-gray-50 rounded-lg p-8 border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        To empower social service providers worldwide with culturally responsive technology that strengthens 
-                        communities and improves outcomes for families everywhere.
+
+                <!-- Consulting Services -->
+                <div class="offering-card card-services rounded-2xl p-8 md:p-10 fade-up fade-up-3">
+                    <div>
+                        <span class="card-badge badge-services">Consulting Services</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">Expert<br>Consulting</h2>
+                    <p class="text-amber-100 text-base leading-relaxed mb-6">
+                        Practical consulting for small businesses, community organisations, and social service providers. From financial clarity to accreditation readiness - real support, without the big-firm price tag.
                     </p>
+
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="feature-pill pill-services">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Financial Consulting
+                        </span>
+                        <span class="feature-pill pill-services">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Accreditation Support
+                        </span>
+                        <span class="feature-pill pill-services">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Business Improvement
+                        </span>
+                        <span class="feature-pill pill-services">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Quality Assurance
+                        </span>
+                    </div>
+
+                    <a href="/services.html" class="card-cta cta-services">
+                        View Consulting Services
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Key Features -->
-    <div id="features-component" data-component="features"></div>
-    <!-- Benefits Section -->
-    <div id="benefits-component" data-component="benefits"></div>
-
-    <!-- Pricing Section -->
-    <!-- <div id="pricing-component" data-component="pricing"></div> -->
-
-    <!-- Contact Section -->
-    <div id="contact-component" data-component="contact"></div>
-
-    <!-- CTA Section -->
-    <!-- <section class="bg-primary-700 text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Service Delivery?</h2>
-            <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-                Join social service providers worldwide who are already using Manaaki Care to deliver better outcomes for their communities.
+    <!-- About strip -->
+    <section class="py-14 bg-white border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up fade-up-1">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">About Manaaki Tech</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                Based in New Zealand, we're a small team committed to building technology and providing expertise that genuinely helps communities. Our name - <em>Manaaki</em> - reflects our core values: hospitality, care, and respect for all people.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#contact" class="btn btn-primary bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg shadow-md hover:shadow-lg transform transition hover:-translate-y-0.5">
-                    Request a Demo
-                </a>
-                <a href="support.html" class="btn btn-outline text-white border-white hover:bg-primary-600 px-8 py-3 text-lg bg-transparent">
-                    Contact Sales
-                </a>
-            </div>
+            <a href="/product.html#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-primary-600 text-primary-700 font-semibold hover:bg-primary-50 transition-colors">
+                Get in touch
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
         </div>
-    </section> -->
+    </section>
 
     <div id="footer-component" data-component="footer"></div>
 
     <!-- Component Loader -->
     <script src="js/componentLoader.js?v=1"></script>
-</body>
-    </script>
-
-    <!-- Custom JavaScript -->
-    <script src="js/main.js"></script>
-    
-    <!-- Lazy Loading Script -->
-    <script src="js/lazy-load.js"></script>
-    
-    <!-- Page Navigation Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all sections that should be tracked in the navigation
-            const sections = document.querySelectorAll('section[id], div[id="features-component"], div[id="benefits-component"], div[id="contact-component"]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            // Function to determine which section is currently in view
-            function highlightNavOnScroll() {
-                let scrollPosition = window.scrollY;
-                
-                // Check each section to see if it's in the viewport
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 100; // Offset for better UX
-                    const sectionHeight = section.offsetHeight;
-                    const sectionId = section.getAttribute('id');
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        // Remove active class from all links
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${sectionId}` || 
-                                (sectionId && sectionId.includes(link.getAttribute('href').substring(1)))) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }
-            
-            // Add scroll event listener
-            window.addEventListener('scroll', highlightNavOnScroll);
-            
-            // Run once on page load
-            highlightNavOnScroll();
-        });
-    </script>
 </body>
 
 </html>
