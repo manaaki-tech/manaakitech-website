@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://manaakitech.com/sitemap.xml
+Disallow: /tile-generator.html
+Disallow: /thank-you.html
