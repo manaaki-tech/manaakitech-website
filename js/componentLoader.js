@@ -188,7 +188,7 @@ style.textContent = `
     height: 50px;
     border: 4px solid rgba(2, 132, 199, 0.1);
     border-radius: 50%;
-    border-top: 4px solid #ea580c;
+    border-top: 4px solid #a84536;
     animation: spin 1s linear infinite;
     margin: 0 auto;
   }
