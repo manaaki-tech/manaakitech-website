@@ -3,7 +3,31 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex items-center">
-                <a href="/" class="flex-shrink-0 flex items-center">
+                <a href="/" class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Manaaki Central icon: network/whakapapa nodes -->
+                    <svg width="32" height="32" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                        <defs>
+                            <radialGradient id="hubGrad" cx="50%" cy="50%">
+                                <stop offset="0%" stop-color="white" stop-opacity="1"/>
+                                <stop offset="50%" stop-color="#E8EDE8" stop-opacity="1"/>
+                                <stop offset="80%" stop-color="#9AAB9A" stop-opacity="1"/>
+                                <stop offset="100%" stop-color="#2C3E35" stop-opacity="1"/>
+                            </radialGradient>
+                        </defs>
+                        <line x1="60" y1="30" x2="85" y2="45" stroke="#A84536" stroke-width="3" opacity="0.6"/>
+                        <line x1="85" y1="45" x2="85" y2="75" stroke="#A84536" stroke-width="3" opacity="0.6"/>
+                        <line x1="85" y1="75" x2="60" y2="90" stroke="#A84536" stroke-width="3" opacity="0.6"/>
+                        <line x1="60" y1="90" x2="35" y2="75" stroke="#A84536" stroke-width="3" opacity="0.6"/>
+                        <line x1="35" y1="75" x2="35" y2="45" stroke="#A84536" stroke-width="3" opacity="0.6"/>
+                        <line x1="35" y1="45" x2="60" y2="30" stroke="#A84536" stroke-width="3" opacity="0.6"/>
+                        <circle cx="60" cy="30" r="8" fill="#5F9EA0"/>
+                        <circle cx="85" cy="45" r="8" fill="#6B7F5A"/>
+                        <circle cx="85" cy="75" r="8" fill="#B8860B"/>
+                        <circle cx="60" cy="90" r="8" fill="#5F9EA0"/>
+                        <circle cx="35" cy="75" r="8" fill="#B8860B"/>
+                        <circle cx="35" cy="45" r="8" fill="#6B7F5A"/>
+                        <circle cx="60" cy="60" r="12" fill="url(#hubGrad)"/>
+                    </svg>
                     <span class="text-lg font-bold text-primary-600">Manaaki Tech</span>
                 </a>
                 <!-- Separator -->
@@ -11,7 +35,7 @@
 
                 <nav class="hidden md:flex md:space-x-2">
                     <a href="/product.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-base font-bold rounded-md hover:bg-gray-50 transition-colors">Manaaki Central</a>
-                    <a href="/services.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-base font-bold rounded-md hover:bg-gray-50 transition-colors">Consulting Services</a>
+                    <a href="/services.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-base font-bold rounded-md hover:bg-gray-50 transition-colors">Consultancy Services</a>
                 </nav>
             </div>
             <div class="hidden md:flex items-center space-x-4">
@@ -38,7 +62,7 @@
     <div x-show="mobileMenuOpen" class="md:hidden" id="mobile-menu" style="display: none;">
         <div class="pt-2 pb-3 space-y-1 border-t border-gray-200">
             <a href="/product.html" class="block px-4 py-2 text-lg font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50">Manaaki Central</a>
-            <a href="/services.html" class="block px-4 py-2 text-lg font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50">Consulting Services</a>
+            <a href="/services.html" class="block px-4 py-2 text-lg font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50">Consultancy Services</a>
             <a href="/support.html" class="block px-4 py-2 text-lg font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50">Support</a>
             <a href="/product.html#contact" class="block px-4 py-2 text-lg font-bold text-primary-600 hover:text-primary-700 hover:bg-primary-50">Contact Us</a>
         </div>
