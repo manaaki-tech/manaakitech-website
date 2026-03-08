@@ -6,101 +6,30 @@
     <title>Consultancy Services | Manaaki Tech</title>
     <meta name="description" content="Financial consulting, accreditation support, and business improvement services for SMEs, not-for-profits, and social service organisations.">
 
+    <!-- OG + Canonical -->
+    <meta property="og:title" content="Consultancy Services | Manaaki Tech">
+    <meta property="og:description" content="Financial consulting, accreditation support, and business improvement services for SMEs, not-for-profits, and social service organisations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manaakitech.com/services.html">
+    <link rel="canonical" href="https://manaakitech.com/services.html">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23c2410c' opacity='0.9'/%3E%3Cpath d='M8,16 Q16,8 24,16' fill='none' stroke-width='3' stroke-linecap='round' stroke='url(%23rainbow)'/%3E%3Cdefs%3E%3ClinearGradient id='rainbow' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23ff0000'/%3E%3Cstop offset='16.67%25' stop-color='%23ff8000'/%3E%3Cstop offset='33.33%25' stop-color='%23ffff00'/%3E%3Cstop offset='50%25' stop-color='%2300ff00'/%3E%3Cstop offset='66.67%25' stop-color='%230000ff'/%3E%3Cstop offset='83.33%25' stop-color='%238000ff'/%3E%3Cstop offset='100%25' stop-color='%23ff00ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
-    <!-- Tailwind CSS via CDN -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind + Config -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
 
-    <!-- Alpine.js via CDN -->
+    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50:  '#fdf5f3',
-                            100: '#f8e8e2',
-                            200: '#f0c8bc',
-                            300: '#e49e8a',
-                            400: '#d37059',
-                            500: '#be5040',
-                            600: '#a84536',
-                            700: '#8b3228',
-                            800: '#6e271f',
-                            900: '#4a1a14',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        :focus {
-            outline: 2px solid #ea580c;
-            outline-offset: 2px;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-up {
-            opacity: 0;
-            animation: fadeUp 0.6s ease-out forwards;
-        }
-
-        .fade-up-delay-1 { animation-delay: 0.1s; }
-        .fade-up-delay-2 { animation-delay: 0.2s; }
-        .fade-up-delay-3 { animation-delay: 0.3s; }
-        .fade-up-delay-4 { animation-delay: 0.4s; }
-        .fade-up-delay-5 { animation-delay: 0.5s; }
-
-        .service-card {
-            transition: all 0.3s ease;
-            border: 1px solid #e5e7eb;
-        }
-
-        .service-card:hover {
-            border-color: #fdba74;
-            box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.1), 0 8px 10px -6px rgba(249, 115, 22, 0.05);
-            transform: translateY(-2px);
-        }
-
-        .hero-gradient {
-            background: linear-gradient(135deg, #2c5d5f 0%, #3d6b50 30%, #7a6535 65%, #b8860b 100%);
-        }
-
-        .section-divider {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #ea580c, #fb923c);
-            border-radius: 2px;
-        }
-
-        /* Tailwind btn utility for the component loader */
-        .btn {
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            transition: background-color 0.2s;
-        }
-        .btn-primary {
-            background-color: #ea580c;
-            color: white;
-        }
-        .btn-primary:hover {
-            background-color: #c2410c;
-        }
-    </style>
 </head>
 
 <body class="bg-[#F7F4F0] text-gray-800">
@@ -149,31 +78,31 @@
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-6 ml-14">
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Monthly Management Accounts</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">We put together your monthly numbers in a way that actually makes sense - so you can see what's working and what needs attention.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Cashflow Forecasting</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Know what's coming in and going out, weeks and months ahead. No surprises, just better planning.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Budgets & Financial Modelling</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Whether you're applying for funding, planning a new project, or just trying to get a handle on costs - we'll help you build a clear picture.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Financial Statements & Reporting</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Year-end financials, board reports, funder reporting - prepared properly and on time, every time.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">GST, PAYE & Compliance</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Stay on top of your tax obligations without the stress. We'll make sure you're meeting your responsibilities to IRD.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Funder & Contract Financial Reporting</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">We know what funders and government agencies expect. We'll help you report clearly and meet your contract conditions.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Financial Health Checks</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">A fresh set of eyes on your finances. We'll spot risks, gaps, and opportunities you might be missing.</p>
                     </div>
@@ -196,19 +125,19 @@
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-6 ml-14">
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Accreditation Preparation</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Getting ready for your accreditation review? We'll walk you through what's needed, identify gaps, and help you get everything in order.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Maintaining Accreditation</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Already accredited but finding it hard to keep up? We'll help you stay on track between reviews so nothing slips through the cracks.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Policy & Procedure Reviews</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">We'll check your policies are current, practical, and actually reflect what your team does day to day - not just ticking a box.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Internal Audits & Self-Assessments</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Regular check-ins on how things are going, so you can catch issues early and show reviewers you're on top of it.</p>
                     </div>
@@ -231,27 +160,27 @@
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-6 ml-14">
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Process Reviews & Gap Analysis</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">We look at how things actually work in your organisation, find the bottlenecks and gaps, and suggest straightforward fixes.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Business Continuity Planning</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">What happens if something goes wrong? We'll help you put a simple plan in place so your organisation can keep going when things get tough.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Risk Management</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">We help you understand the risks your organisation faces and put sensible controls in place - nothing over the top, just what's needed.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Governance & Controls</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Good governance doesn't have to be complicated. We'll help you set up the right structures so your board and leadership team can do their best work.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Continuous Improvement Support</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Ongoing, hands-on help to keep getting better at what you do - reviewing what's working, what's not, and making changes that stick.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg p-6">
+                    <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Systems & Workflow Advice</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">Using too many spreadsheets? Processes taking longer than they should? We'll help you find simpler ways to get things done.</p>
                     </div>
@@ -273,7 +202,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                                 </svg>
                             </div>
-                            <h3 class="font-semibold text-gray-900 mb-1 text-sm">Have a Kōrero</h3>
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm">Have a Korero</h3>
                             <p class="text-gray-500 text-xs">We start with a conversation to understand what you need.</p>
                         </div>
                         <div>
@@ -335,7 +264,7 @@
     <!-- Get in touch CTA -->
     <section class="py-12 bg-primary-50 border-t border-primary-100">
         <div class="max-w-2xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold text-gray-900 mb-3">Ready to have a kōrero?</h2>
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">Ready to have a korero?</h2>
             <p class="text-gray-600 mb-6">Tell us a bit about your organisation and what you need help with. We'll get back to you promptly.</p>
             <a href="/product.html#contact" class="inline-flex items-center gap-2 px-8 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
                 Get in touch

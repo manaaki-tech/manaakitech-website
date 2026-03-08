@@ -3,115 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Manaaki Central</title>
-    <meta name="description" content="Privacy Policy for Manaaki Central client/case management software">
+    <title>Privacy Policy | Manaaki Tech</title>
+    <meta name="description" content="Privacy Policy for Manaaki Tech and Manaaki Central client/case management software.">
 
-    <!-- Tailwind CSS via CDN -->
+    <!-- OG + Canonical -->
+    <meta property="og:title" content="Privacy Policy | Manaaki Tech">
+    <meta property="og:description" content="Privacy Policy for Manaaki Tech and Manaaki Central client/case management software.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manaakitech.com/privacy-policy.html">
+    <link rel="canonical" href="https://manaakitech.com/privacy-policy.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind + Config -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
 
-    <!-- Alpine.js via CDN -->
+    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Custom Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#fff7ed',
-                            100: '#ffedd5',
-                            200: '#fed7aa',
-                            300: '#fdba74',
-                            400: '#fb923c',
-                            500: '#f97316',
-                            600: '#ea580c',
-                            700: '#c2410c',
-                            800: '#9a3412',
-                            900: '#7c2d12',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Custom styles -->
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .btn {
-                @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
-            }
-            .btn-primary {
-                @apply bg-primary-600 text-white hover:bg-primary-700;
-            }
-            .btn-outline {
-                @apply border border-primary-600 text-primary-600 hover:bg-primary-50;
-            }
-        }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-[#F7F4F0] text-gray-800">
     <!-- Header Component -->
-    <header class="bg-white shadow-sm" x-data="{ mobileMenuOpen: false }">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="/" class="flex-shrink-0 flex items-center">
-                        <!-- Organisation Logo -->
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" class="mr-2">
-                            <circle cx="20" cy="20" r="18" fill="none" stroke="#c2410c" stroke-width="3"/>
-                            <path d="M12,20 Q20,12 28,20" fill="none" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
-                        </svg> -->
-                        <!-- Organisation Name -->
-                        <span class="text-xl font-bold text-primary-600 mr-2">Manaaki Tech</span>
-                    </a>
-                </div>
-                <div class="hidden md:flex items-center">
-                    <a href="/" class="btn btn-primary">Return to Home</a>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <div class="flex items-center md:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <!-- Icon when menu is closed -->
-                        <svg x-show="!mobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <!-- Icon when menu is open -->
-                        <svg x-show="mobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="display: none;">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile menu, show/hide based on menu state. -->
-        <div x-show="mobileMenuOpen" class="md:hidden" id="mobile-menu" style="display: none;">
-            <div class="pt-2 pb-3 space-y-1 border-t border-gray-200">
-                <a href="/" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">Return to Home</a>
-            </div>
-        </div>
-    </header>
-    
+    <div id="header-component" data-component="header"></div>
+
     <!-- Main Content -->
     <main class="py-12">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-lg shadow-lg p-8">
                 <h1 class="text-3xl font-bold text-gray-900 mb-6">Privacy Policy</h1>
-                
+
                 <div class="prose prose-lg max-w-none">
                     <p class="mb-4">Last Updated: 15 March 2024</p>
-                    
+
                     <p class="mb-4">Manaaki Tech ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Manaaki Tech.</p>
-                    
+
                     <p class="mb-4">This Privacy Policy applies to our website, and its associated subdomains (collectively, our "Service") alongside our application, Manaaki Central. By accessing or using our Service, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy and our Terms of Service.</p>
-                    
+
                     <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">1. Introduction</h2>
                     <p class="mb-4">
                         Manaaki Tech ("we", "our", or "us") is committed to transparency regarding privacy practices for our client/case management software platform. This Privacy Policy explains our role in relation to the data processed through our platform when integrated with your existing cloud infrastructure.
@@ -123,17 +59,17 @@
                     <p class="mb-4">
                         Manaaki Tech provides client/case management software that is integrated into your existing Microsoft Azure or cloud platforms. We do not provide hosting services or direct data storage as part of a SaaS solution.
                     </p>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Legitimate Reasons for Processing Your Personal Information</h3>
                     <p class="mb-4">
                         We only collect and use your personal information when we have a legitimate reason for doing so. In which instance, we only collect personal information that is reasonably necessary to provide our services to you.
                     </p>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">2.2 Account Information</h3>
                     <p class="mb-4">
                         When you engage with Manaaki Tech, we collect limited information necessary to provide our services, such as contact details for authorised representatives from your organisation.
                     </p>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">2.3 Platform Usage Data</h3>
                     <p class="mb-4">
                         We may collect aggregated, anonymised information about how our platform is used, including performance metrics, feature utilisation statistics, and system diagnostics. This technical information helps us improve our software and provide support services.
@@ -144,12 +80,12 @@
                     <p class="mb-4">
                         As our client, you maintain full control over all data stored in your Microsoft Azure or cloud platforms. This includes client/case data, user information, and any other personal data processed through our platform.
                     </p>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">3.2 Consent and Legal Basis</h3>
                     <p class="mb-4">
                         You are responsible for ensuring that you have appropriate legal bases for collecting, processing, and storing personal data using our platform, including obtaining necessary consents from your clients and end users.
                     </p>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">3.3 Security Configuration</h3>
                     <p class="mb-4">
                         You are responsible for implementing and maintaining appropriate security controls within your Microsoft Azure or cloud environment where our software is deployed, including access controls, encryption, and other security measures according to your internal policies and applicable regulations.
@@ -160,12 +96,12 @@
                     <p class="mb-4">
                         We collect information from you when you visit our website, register on our site, place an order, subscribe to our newsletter, respond to a survey, fill out a form, use Live Chat, open a Support Ticket, or otherwise contact us.
                     </p>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Personal Information</h3>
                     <p class="mb-4">
                         Depending upon your use of our Service, we may collect the following personal information:
                     </p>
-                    
+
                     <ul class="list-disc pl-8 mb-4 text-gray-700">
                         <li>Name and contact information (email address, phone number, etc.)</li>
                         <li>Billing information and transaction history</li>
@@ -178,7 +114,7 @@
                     <p class="mb-4">
                         When you visit our website, our servers may automatically log the standard data provided by your web browser. It may include your device's Internet Protocol (IP) address, your browser type and version, the pages you visit, the time and date of your visit, the time spent on each page, other details about your visit, and technical details that occur in conjunction with any errors you may encounter.
                     </p>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">5.2 Vulnerability Management</h3>
                     <p class="mb-4">
                         If we discover security vulnerabilities in our software, we will promptly notify you and provide patches or mitigation instructions according to the severity of the issue.
@@ -189,7 +125,7 @@
                     <p class="mb-4">
                         Our platform may incorporate third-party libraries, components, or services. We carefully evaluate these components for security and reliability before inclusion in our software.
                     </p>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">6.2 Third-Party Integration</h3>
                     <p class="mb-4">
                         If you choose to integrate our platform with third-party services or applications, you are responsible for ensuring that such integrations comply with your privacy and security requirements.
@@ -200,7 +136,7 @@
                     <p class="mb-4">
                         As the data controller, you are responsible for responding to data subject requests regarding personal data processed through our platform. Our software includes features to help you fulfill these requests.
                     </p>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">7.2 Data Breach Notification</h3>
                     <p class="mb-4">
                         You are responsible for notifying relevant authorities and affected individuals in the event of a data breach within your environment. We will provide reasonable assistance in investigating any security incidents that may involve our software.
@@ -210,7 +146,7 @@
                     <p class="mb-4">
                         We may disclose personal information to:
                     </p>
-                    
+
                     <ul class="list-disc pl-8 mb-4 text-gray-700">
                         <li>a parent, subsidiary, or affiliate of our company</li>
                         <li>third party service providers for the purpose of enabling them to provide their services, for example, IT service providers, data storage, hosting and server providers, advertisers, or analytics platforms</li>
@@ -236,7 +172,7 @@
                     <p class="mb-4">
                         For any questions or concerns regarding your privacy, you may contact us using the following details:
                     </p>
-                    
+
                     <p class="mb-4">
                         <strong>Privacy Officer</strong><br>
                         support@manaakitech.com
@@ -246,35 +182,9 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-primary-50 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
-                <div class="px-5 py-2">
-                    <a href="index.html" class="text-base text-gray-500 hover:text-gray-900">Home</a>
-                </div>
-                <div class="px-5 py-2">
-                    <a href="privacy-policy.html" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
-                </div>
-                <div class="px-5 py-2">
-                    <a href="support.html" class="text-base text-gray-500 hover:text-gray-900">Support Centre</a>
-                </div>
-            </nav>
-            <p class="mt-8 text-center text-base text-gray-400">
-                &copy; 2025 Manaaki Central. All rights reserved.
-            </p>
-        </div>
-    </footer>
+    <div id="footer-component" data-component="footer"></div>
 
-    <!-- Load Components Script -->
-    <script src="js/componentLoader.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const componentLoader = new ComponentLoader('components/');
-            componentLoader.loadComponent('header-component', 'header-component');
-            // Assuming footer might also be a component in the future
-            // componentLoader.loadComponent('footer-component', 'footer-component'); 
-        });
-    </script>
+    <!-- Component Loader -->
+    <script src="js/componentLoader.js?v=1"></script>
 </body>
 </html>

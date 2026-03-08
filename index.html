@@ -5,54 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manaaki Tech | Technology & Consulting for Communities</title>
-    <meta name="description" content="Manaaki Tech offers Manaaki Central - a whānau-centred case management platform - and specialist Consultancy Services for SMEs and not-for-profits.">
+    <meta name="description" content="Manaaki Tech offers Manaaki Central - a whanau-centred case management platform - and specialist Consultancy Services for SMEs and not-for-profits.">
+
+    <!-- OG + Canonical -->
+    <meta property="og:title" content="Manaaki Tech | Technology & Consulting for Communities">
+    <meta property="og:description" content="Manaaki Tech offers Manaaki Central - a whanau-centred case management platform - and specialist Consultancy Services for SMEs and not-for-profits.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manaakitech.com/">
+    <link rel="canonical" href="https://manaakitech.com/">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23c2410c' opacity='0.9'/%3E%3Cpath d='M8,16 Q16,8 24,16' fill='none' stroke-width='3' stroke-linecap='round' stroke='url(%23rainbow)'/%3E%3Cdefs%3E%3ClinearGradient id='rainbow' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23ff0000'/%3E%3Cstop offset='16.67%25' stop-color='%23ff8000'/%3E%3Cstop offset='33.33%25' stop-color='%23ffff00'/%3E%3Cstop offset='50%25' stop-color='%2300ff00'/%3E%3Cstop offset='66.67%25' stop-color='%230000ff'/%3E%3Cstop offset='83.33%25' stop-color='%238000ff'/%3E%3Cstop offset='100%25' stop-color='%23ff00ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
-    <!-- Tailwind CSS via CDN -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind + Config -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
 
-    <!-- Alpine.js via CDN -->
+    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50:  '#fdf5f3',
-                            100: '#f8e8e2',
-                            200: '#f0c8bc',
-                            300: '#e49e8a',
-                            400: '#d37059',
-                            500: '#be5040',
-                            600: '#a84536',
-                            700: '#8b3228',
-                            800: '#6e271f',
-                            900: '#4a1a14',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-up {
-            opacity: 0;
-            animation: fadeUp 0.7s ease-out forwards;
-        }
         .fade-up-1 { animation-delay: 0.1s; }
         .fade-up-2 { animation-delay: 0.25s; }
         .fade-up-3 { animation-delay: 0.4s; }
@@ -231,7 +211,7 @@
                     </div>
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">Manaaki<br>Central</h2>
                     <p class="text-teal-100 text-base leading-relaxed mb-6">
-                        A whānau-centred case management platform built for social services organisations. Manage client journeys, reporting, and team workflows - all in one place, with cultural responsiveness at the core.
+                        A whanau-centred case management platform built for social services organisations. Manage client journeys, reporting, and team workflows - all in one place, with cultural responsiveness at the core.
                     </p>
 
                     <div class="flex flex-wrap gap-2 mb-8">
