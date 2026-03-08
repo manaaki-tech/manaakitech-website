@@ -1,8 +1,5 @@
 /* Custom styles beyond Tailwind CSS */
 
-/* Inter font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 /* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
@@ -43,9 +40,15 @@ body {
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
 }
 
-/* Enhanced button accessibility */
+/* Shared button classes */
 .btn {
-  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
 }
@@ -53,6 +56,29 @@ body {
 .btn:focus {
   outline: 3px solid #c4850a;
   outline-offset: 2px;
+}
+
+.btn-primary {
+  background-color: #b8860b;
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background-color: #9a6e09;
+}
+
+.btn-outline {
+  border: 1px solid #d1d5db;
+  background-color: transparent;
+}
+.btn-outline:hover {
+  background-color: #f9fafb;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  padding: 1.5rem;
 }
 
 /* Premium hero button styles */
@@ -322,3 +348,45 @@ input:focus, textarea:focus {
   border-left: 3px solid;
   border-image: linear-gradient(to bottom, #ffb3b3, #ffd9b3, #ffffb3, #b3ffb3, #b3b3ff, #d9b3ff, #ffb3ff) 1;
 }
+
+/* Services page styles */
+.service-card {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.service-card:hover {
+  border-color: #e49e8a;
+  box-shadow: 0 10px 25px -5px rgba(168, 69, 54, 0.1), 0 8px 10px -6px rgba(168, 69, 54, 0.05);
+  transform: translateY(-2px);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #2c5d5f 0%, #3d6b50 30%, #7a6535 65%, #b8860b 100%);
+}
+
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #a84536, #d37059);
+  border-radius: 2px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+.fade-up-delay-1 { animation-delay: 0.1s; }
+.fade-up-delay-2 { animation-delay: 0.2s; }
+.fade-up-delay-3 { animation-delay: 0.3s; }
+.fade-up-delay-4 { animation-delay: 0.4s; }
+.fade-up-delay-5 { animation-delay: 0.5s; }
