@@ -109,7 +109,10 @@ The live site auto-deploys from `main` on Netlify, but you must never push `main
 2. Commit the change: `git add <files> && git commit -m "describe the change"`
 3. Push `dev`: `git push origin dev`
 4. Open (or update) a pull request from `dev` into `main`, then **STOP**:
-   https://github.com/manaaki-tech/manaakitech-website/compare/main...dev
+   - Preferred: `gh pr create --base main --head dev --fill` — or if a PR is already open, just push (step 3) and it updates automatically; `gh pr view --web` shows it.
+   - Fallback (if `gh` isn't logged in): open https://github.com/manaaki-tech/manaakitech-website/compare/main...dev and click *Create pull request*.
+
+Note: this machine has a `pre-push` hook that refuses direct pushes to `main`, so publishing must go through a PR. Do not try to work around it.
 
 A human then reviews the diff and the Netlify **deploy preview** (Netlify builds a live preview URL for the open PR) and merges when happy. Merging `main` triggers the production deploy (~1–2 min). Live site: `https://manaakitech.com` (also `https://bejewelled-gecko-85feaf.netlify.app`). There is no build step — `netlify.toml` just sets `publish = "."`.
 
