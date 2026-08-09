@@ -60,9 +60,9 @@ This is a static site with **no automated test suite**, so "verify" here means *
 The verification loop for this project:
 ```
 1. Make the edit        → verify: the file changed is the right one (component vs page)
-2. python test_server.py → verify: open the browser, the change looks correct
+2. py test_server.py → verify: open the browser, the change looks correct
 3. Check affected pages  → verify: shared components changed everywhere they appear
-4. Commit + push to main → verify: Netlify deploy succeeds, live site looks right
+4. Commit on dev, push, open PR → verify: PR's Netlify deploy preview looks right; a human merges to go live
 ```
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
@@ -82,19 +82,39 @@ Edits here are often driven by a non-technical site owner via natural-language r
 ## Local Preview
 
 ```
-python test_server.py
+py test_server.py
 ```
 
-Opens `http://localhost:8000` automatically. To use a different port: `python test_server.py 3000`.
+Opens `http://localhost:8000` automatically. To use a different port: `py test_server.py 3000`.
+
+> Windows note: use `py` (the Python launcher), not `python`. On this machine a bare `python` can resolve to the Microsoft Store alias stub, which silently fails to start the server. `py` always works.
 
 **You must use this server — never open .html files directly in a browser.** The component system uses `fetch()` to load shared page chunks, and browsers block `fetch()` on the `file://` protocol. If components look missing or the page is blank, this is almost always the cause.
 
+## Branch discipline (important)
+
+**Only ever work on the `dev` branch. Never commit to, push to, or merge into `main`.**
+
+`main` is production — anything merged into it deploys straight to the live public site. Promotion to `main` happens **only** through a human-reviewed pull request; you never do it yourself.
+
+- All edits and commits go on `dev`. This is the default working branch.
+- If you ever find yourself on `main`, switch back before editing: `git switch dev`.
+- When asked to "publish" / "make it live" / "push it", follow the Publish steps below — push `dev` and open (or update) a PR into `main`, then **stop and hand off to a human**. Do not merge the PR.
+
 ## Publish / Deploy
 
-1. Commit the changed file(s): `git add <files> && git commit -m "describe the change"`
-2. Push to main: `git push origin main`
+The live site auto-deploys from `main` on Netlify, but you must never push `main` directly. To publish a change:
 
-Netlify picks up every push to `main` and deploys automatically (~1–2 min). The live site is at `https://manaakitech.com` (also accessible at `https://bejewelled-gecko-85feaf.netlify.app`). There is no build step — `netlify.toml` just sets `publish = "."`. There is no staging branch; pushing to `main` publishes to the live site, so preview locally first.
+1. Make sure you're on `dev`: `git switch dev`
+2. Commit the change: `git add <files> && git commit -m "describe the change"`
+3. Push `dev`: `git push origin dev`
+4. Open (or update) a pull request from `dev` into `main`, then **STOP**:
+   - Preferred: `gh pr create --base main --head dev --fill` — or if a PR is already open, just push (step 3) and it updates automatically; `gh pr view --web` shows it.
+   - Fallback (if `gh` isn't logged in): open https://github.com/manaaki-tech/manaakitech-website/compare/main...dev and click *Create pull request*.
+
+Note: this machine has a `pre-push` hook that refuses direct pushes to `main`, so publishing must go through a PR. Do not try to work around it.
+
+A human then reviews the diff and the Netlify **deploy preview** (Netlify builds a live preview URL for the open PR) and merges when happy. Merging `main` triggers the production deploy (~1–2 min). Live site: `https://manaakitech.com` (also `https://bejewelled-gecko-85feaf.netlify.app`). There is no build step — `netlify.toml` just sets `publish = "."`.
 
 ## Architecture
 
@@ -138,4 +158,4 @@ Shared page sections live in `components/*.html` and are injected at page load b
 - **Page-specific content** (e.g. the body of `services.html`, `support.html`) is inline in that page's `.html` file.
 - **SEO metadata** (`<title>`, `<meta description>`, canonical URL) is in the `<head>` of each individual page file.
 - **Brand colors** → `js/tailwind-config.js` only.
-- After any edit, preview with `python test_server.py`, then commit and push to publish.
+- After any edit, preview with `py test_server.py`, then commit on `dev`, push, and open a PR into `main` (see Publish / Deploy). Never push `main`.
