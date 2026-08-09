@@ -60,7 +60,7 @@ This is a static site with **no automated test suite**, so "verify" here means *
 The verification loop for this project:
 ```
 1. Make the edit        → verify: the file changed is the right one (component vs page)
-2. python test_server.py → verify: open the browser, the change looks correct
+2. py test_server.py → verify: open the browser, the change looks correct
 3. Check affected pages  → verify: shared components changed everywhere they appear
 4. Commit + push to main → verify: Netlify deploy succeeds, live site looks right
 ```
@@ -82,10 +82,12 @@ Edits here are often driven by a non-technical site owner via natural-language r
 ## Local Preview
 
 ```
-python test_server.py
+py test_server.py
 ```
 
-Opens `http://localhost:8000` automatically. To use a different port: `python test_server.py 3000`.
+Opens `http://localhost:8000` automatically. To use a different port: `py test_server.py 3000`.
+
+> Windows note: use `py` (the Python launcher), not `python`. On this machine a bare `python` can resolve to the Microsoft Store alias stub, which silently fails to start the server. `py` always works.
 
 **You must use this server — never open .html files directly in a browser.** The component system uses `fetch()` to load shared page chunks, and browsers block `fetch()` on the `file://` protocol. If components look missing or the page is blank, this is almost always the cause.
 
@@ -138,4 +140,4 @@ Shared page sections live in `components/*.html` and are injected at page load b
 - **Page-specific content** (e.g. the body of `services.html`, `support.html`) is inline in that page's `.html` file.
 - **SEO metadata** (`<title>`, `<meta description>`, canonical URL) is in the `<head>` of each individual page file.
 - **Brand colors** → `js/tailwind-config.js` only.
-- After any edit, preview with `python test_server.py`, then commit and push to publish.
+- After any edit, preview with `py test_server.py`, then commit and push to publish.
