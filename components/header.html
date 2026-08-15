@@ -33,19 +33,20 @@
                 <!-- Separator -->
                 <span class="mx-3 text-gray-300">|</span>
 
-                <nav class="hidden md:flex md:space-x-2">
+                <nav class="hidden lg:flex lg:space-x-1 xl:space-x-2">
                     <a href="/product.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-base font-bold rounded-md hover:bg-gray-50 transition-colors">Manaaki Central</a>
                     <a href="/services.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-base font-bold rounded-md hover:bg-gray-50 transition-colors">Consultancy Services</a>
                     <a href="/pricing.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-base font-bold rounded-md hover:bg-gray-50 transition-colors">Pricing</a>
+                    <a href="/india.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-base font-bold rounded-md hover:bg-gray-50 transition-colors whitespace-nowrap">NZ-India FTA</a>
                 </nav>
             </div>
-            <div class="hidden md:flex items-center space-x-4">
+            <div class="hidden lg:flex items-center space-x-4">
                 <a href="/support.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-base font-bold">Support</a>
                 <a href="/product.html#contact" class="btn btn-primary">Contact Us</a>
             </div>
 
             <!-- Mobile menu button -->
-            <div class="flex items-center md:hidden">
+            <div class="flex items-center lg:hidden">
                 <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-controls="mobile-menu" :aria-expanded="mobileMenuOpen">
                     <span class="sr-only">Open main menu</span>
                     <svg x-show="!mobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -60,11 +61,12 @@
     </div>
 
     <!-- Mobile menu -->
-    <div x-show="mobileMenuOpen" class="md:hidden" id="mobile-menu" style="display: none;">
+    <div x-show="mobileMenuOpen" class="lg:hidden" id="mobile-menu" style="display: none;">
         <div class="pt-2 pb-3 space-y-1 border-t border-gray-200">
             <a href="/product.html" class="block px-4 py-2 text-lg font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50">Manaaki Central</a>
             <a href="/services.html" class="block px-4 py-2 text-lg font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50">Consultancy Services</a>
             <a href="/pricing.html" class="block px-4 py-2 text-lg font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50">Pricing</a>
+            <a href="/india.html" class="block px-4 py-2 text-lg font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50">NZ-India FTA</a>
             <a href="/support.html" class="block px-4 py-2 text-lg font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-50">Support</a>
             <a href="/product.html#contact" class="block px-4 py-2 text-lg font-bold text-primary-600 hover:text-primary-700 hover:bg-primary-50">Contact Us</a>
         </div>
