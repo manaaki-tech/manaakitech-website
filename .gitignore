@@ -1,0 +1,9 @@
+# Netlify publishes the whole repo (netlify.toml sets publish = "."), so
+# anything committed here is served publicly at manaakitech.com. Keep working
+# material and internal documents out of the repo entirely.
+
+# Source material and internal pricing documents, not website content
+new-consultancy-website/
+
+# Local Claude Code settings and worktrees
+.claude/
