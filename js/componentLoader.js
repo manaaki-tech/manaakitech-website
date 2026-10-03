@@ -162,6 +162,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Add CSS for loading overlay
 const style = document.createElement('style');
 style.textContent = `
+  /* Always show the scrollbar track so the page does not shift sideways when the loading overlay goes away */
+  html {
+    overflow-y: scroll;
+  }
+
   #page-loading-overlay {
     position: fixed;
     top: 0;
