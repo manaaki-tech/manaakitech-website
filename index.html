@@ -149,6 +149,14 @@
             background: rgba(255,255,255,0.12);
             color: #fcd34d;
         }
+
+        /* This page's nav labels are short, so it needs less clearance than
+           the sitewide default (sized for the longest label, on services.html). */
+        @media (min-width: 641px) {
+            body:has(.page-nav) {
+                padding-right: 200px;
+            }
+        }
     </style>
 </head>
 
