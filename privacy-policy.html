@@ -15,11 +15,13 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind + Config -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,6 +34,20 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-[#F7F4F0] text-gray-800">
+    <!-- Floating page navigation for larger screens -->
+    <nav class="page-nav">
+        <ul>
+            <li><a href="#introduction" class="nav-link">Introduction</a></li>
+            <li><a href="#our-role" class="nav-link">Our Role</a></li>
+            <li><a href="#your-role" class="nav-link">Your Role</a></li>
+            <li><a href="#updates" class="nav-link">Updates</a></li>
+            <li><a href="#third-party" class="nav-link">Third-Party</a></li>
+            <li><a href="#your-rights" class="nav-link">Your Rights</a></li>
+            <li><a href="#changes" class="nav-link">Changes</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
     <!-- Header Component -->
     <div id="header-component" data-component="header"></div>
 
@@ -48,13 +64,13 @@
 
                     <p class="mb-4">This Privacy Policy applies to our website, and its associated subdomains (collectively, our "Service") alongside our application, Manaaki Central. By accessing or using our Service, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy and our Terms of Service.</p>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">1. Introduction</h2>
+                    <h2 id="introduction" class="text-2xl font-semibold text-gray-900 mt-8 mb-4">1. Introduction</h2>
                     <p class="mb-4">
                         Manaaki Tech ("we", "our", or "us") is committed to transparency regarding privacy practices for our client/case management software platform. This Privacy Policy explains our role in relation to the data processed through our platform when integrated with your existing cloud infrastructure.
                         As a technology provider that integrates our software into your Microsoft Azure or cloud platforms, we recognise that you maintain primary control over data storage, collection, and security. This policy clarifies the respective responsibilities regarding data protection and privacy when using our platform.
                     </p>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">2. Our Role in Data Processing</h2>
+                    <h2 id="our-role" class="text-2xl font-semibold text-gray-900 mt-8 mb-4">2. Our Role in Data Processing</h2>
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">2.1 Software Provider</h3>
                     <p class="mb-4">
                         Manaaki Tech provides client/case management software that is integrated into your existing Microsoft Azure or cloud platforms. We do not provide hosting services or direct data storage as part of a SaaS solution.
@@ -75,7 +91,7 @@
                         We may collect aggregated, anonymised information about how our platform is used, including performance metrics, feature utilisation statistics, and system diagnostics. This technical information helps us improve our software and provide support services.
                     </p>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">3. Your Role as Data Controller</h2>
+                    <h2 id="your-role" class="text-2xl font-semibold text-gray-900 mt-8 mb-4">3. Your Role as Data Controller</h2>
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">3.1 Data Storage and Management</h3>
                     <p class="mb-4">
                         As our client, you maintain full control over all data stored in your Microsoft Azure or cloud platforms. This includes client/case data, user information, and any other personal data processed through our platform.
@@ -109,7 +125,7 @@
                         <li>Communication between you and Manaaki Tech (e.g., we may send you Service-related emails)</li>
                     </ul>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">5. Updates and Maintenance</h2>
+                    <h2 id="updates" class="text-2xl font-semibold text-gray-900 mt-8 mb-4">5. Updates and Maintenance</h2>
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Log Data</h3>
                     <p class="mb-4">
                         When you visit our website, our servers may automatically log the standard data provided by your web browser. It may include your device's Internet Protocol (IP) address, your browser type and version, the pages you visit, the time and date of your visit, the time spent on each page, other details about your visit, and technical details that occur in conjunction with any errors you may encounter.
@@ -120,7 +136,7 @@
                         If we discover security vulnerabilities in our software, we will promptly notify you and provide patches or mitigation instructions according to the severity of the issue.
                     </p>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">6. Third-Party Components</h2>
+                    <h2 id="third-party" class="text-2xl font-semibold text-gray-900 mt-8 mb-4">6. Third-Party Components</h2>
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">6.1 Software Dependencies</h3>
                     <p class="mb-4">
                         Our platform may incorporate third-party libraries, components, or services. We carefully evaluate these components for security and reliability before inclusion in our software.
@@ -131,7 +147,7 @@
                         If you choose to integrate our platform with third-party services or applications, you are responsible for ensuring that such integrations comply with your privacy and security requirements.
                     </p>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">7. Your Data Protection Rights and Responsibilities</h2>
+                    <h2 id="your-rights" class="text-2xl font-semibold text-gray-900 mt-8 mb-4">7. Your Data Protection Rights and Responsibilities</h2>
                     <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">7.1 Responding to Data Subject Requests</h3>
                     <p class="mb-4">
                         As the data controller, you are responsible for responding to data subject requests regarding personal data processed through our platform. Our software includes features to help you fulfill these requests.
@@ -158,7 +174,7 @@
                         <li>third parties to collect and process data</li>
                     </ul>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">8. Changes to This Privacy Policy</h2>
+                    <h2 id="changes" class="text-2xl font-semibold text-gray-900 mt-8 mb-4">8. Changes to This Privacy Policy</h2>
                     <p class="mb-4">
                         We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by:
                         <ul class="list-disc pl-6 mb-4">
@@ -168,7 +184,7 @@
                         </ul>
                     </p>
 
-                    <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">9. Contact Us</h2>
+                    <h2 id="contact" class="text-2xl font-semibold text-gray-900 mt-8 mb-4">9. Contact Us</h2>
                     <p class="mb-4">
                         For any questions or concerns regarding your privacy, you may contact us using the following details:
                     </p>
@@ -186,5 +202,33 @@
 
     <!-- Component Loader -->
     <script src="js/componentLoader.js?v=1"></script>
+
+    <!-- Page Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            const sections = Array.from(navLinks)
+                .map(link => document.querySelector(link.getAttribute('href')))
+                .filter(Boolean);
+
+            function highlightNavOnScroll() {
+                const scrollPosition = window.scrollY;
+                let currentId = null;
+
+                sections.forEach(section => {
+                    if (scrollPosition >= section.offsetTop - 100) {
+                        currentId = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+                });
+            }
+
+            window.addEventListener('scroll', highlightNavOnScroll);
+            highlightNavOnScroll();
+        });
+    </script>
 </body>
 </html>

@@ -15,11 +15,13 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind + Config -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,6 +34,14 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-[#F7F4F0] text-gray-800">
+    <!-- Floating page navigation for larger screens -->
+    <nav class="page-nav">
+        <ul>
+            <li><a href="#faq" class="nav-link">FAQ</a></li>
+            <li><a href="#contact-support" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
     <!-- Header Component (Main Site Header) -->
     <div id="header-component" data-component="header"></div>
 
@@ -43,7 +53,7 @@
                     Support Centre
                 </h1>
                 <p class="text-xl text-gray-500 max-w-3xl mx-auto">
-                    We're here to help you get the most out of Manaaki Central. Find answers to common questions or contact our support team.
+                    We are here to help you get the most out of Manaaki Central. Find answers to common questions or contact our support team.
                 </p>
             </div>
 
@@ -72,10 +82,10 @@
                             class="p-5 bg-white border-l border-r border-b rounded-b-lg shadow-md"
                         >
                             <p class="text-gray-600">
-                                Getting started with Manaaki Central is easy! Choose the plan that best fits your organisation's needs, contact us for an account, and we will guide you through our step-by-step onboarding process. Our team will guide you through setting up your account, configuring your workflows, and importing any existing client data.
+                                Getting started with Manaaki Central is straightforward. Choose the plan that best fits your organisation's needs, contact us for an account, and we will guide you through our step-by-step onboarding process. Our team will guide you through setting up your account, configuring your workflows, and importing any existing client data.
                             </p>
                             <p class="text-gray-600 mt-3">
-                                We also offer personalised onboarding sessions for new users to ensure you're comfortable with the platform and can start using it effectively right away.
+                                We also offer personalised onboarding sessions for new users to ensure you are comfortable with the platform and can start using it effectively right away.
                             </p>
                         </div>
                     </div>
@@ -103,7 +113,7 @@
                                 Yes, Manaaki Central supports data import from various formats including CSV, Excel, and direct API integrations with several popular case management systems. Our data migration specialists will work with you to ensure a smooth transition from your existing system to Manaaki Central.
                             </p>
                             <p class="text-gray-600 mt-3">
-                                We understand that migrating data can be a complex process, especially when dealing with sensitive client information. That's why we provide comprehensive support throughout the entire migration process to ensure data integrity and security.
+                                We understand that migrating data can be a complex process, especially when dealing with sensitive client information. That is why we provide comprehensive support throughout the entire migration process to ensure data integrity and security.
                             </p>
                         </div>
                     </div>
@@ -128,7 +138,7 @@
                             class="p-5 bg-white border-l border-r border-b rounded-b-lg shadow-md"
                         >
                             <p class="text-gray-600">
-                                Security is our top priority at Manaaki Central. We implement industry-leading security measures including:
+                                We take security seriously, and these are the measures in place:
                             </p>
                             <ul class="list-disc pl-6 mt-3 text-gray-600">
                                 <li>End-to-end encryption for all data in transit and at rest</li>
@@ -218,7 +228,7 @@
             </div>
 
             <!-- Contact Support Section -->
-            <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+            <div id="contact-support" class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
                 <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Contact Support</h2>
                 <div class="space-y-6">
                     &nbsp;
@@ -310,7 +320,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                     <p class="text-lg font-medium text-gray-900">Thank you!</p>
-                                    <p class="text-gray-600">Your support request has been submitted. We'll get back to you as soon as possible.</p>
+                                    <p class="text-gray-600">Your support request has been submitted. We will get back to you as soon as possible.</p>
                                 </div>
                             </div>
                         </form>
@@ -324,5 +334,33 @@
 
     <!-- Component Loader -->
     <script src="js/componentLoader.js?v=1"></script>
+
+    <!-- Page Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            const sections = Array.from(navLinks)
+                .map(link => document.querySelector(link.getAttribute('href')))
+                .filter(Boolean);
+
+            function highlightNavOnScroll() {
+                const scrollPosition = window.scrollY;
+                let currentId = null;
+
+                sections.forEach(section => {
+                    if (scrollPosition >= section.offsetTop - 100) {
+                        currentId = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+                });
+            }
+
+            window.addEventListener('scroll', highlightNavOnScroll);
+            highlightNavOnScroll();
+        });
+    </script>
 </body>
 </html>
