@@ -33,6 +33,16 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* This page's nav labels are short, so it needs less clearance than
+           the sitewide default (sized for the longest label, on services.html). */
+        @media (min-width: 641px) {
+            body:has(.page-nav) {
+                padding-right: 200px;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-[#F7F4F0] text-gray-800">
@@ -43,7 +53,7 @@
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#features" class="nav-link">Features</a></li>
             <li><a href="#benefits" class="nav-link">Benefits</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="#contact-component" class="nav-link">Contact</a></li>
         </ul>
     </nav>
     <div id="header-component" data-component="header"></div>
@@ -123,7 +133,7 @@
                         Manaaki Central is our first step: helping social services connect with and support whānau, with
                         cultural values built into how it works rather than added on afterwards.
                     </p>
-                    <a href="#contact" class="btn btn-outline text-primary-700 border-primary-700 hover:bg-primary-50 px-6 py-3 text-base">
+                    <a href="/contact.html" class="btn btn-outline text-primary-700 border-primary-700 hover:bg-primary-50 px-6 py-3 text-base">
                         Contact us
                     </a>
                 </div>

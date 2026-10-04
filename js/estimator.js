@@ -10,8 +10,9 @@
  *
  *  To add a service: append one object to SERVICES. Nothing else changes.
  *
- *  Every rate mirrors the published pricing page (pricing.html). If a
- *  price changes there, change it here.
+ *  Every rate mirrors a published pricing page: pricing.html for the core
+ *  consultancy services, india.html ("What It Costs") for the NZ-India FTA
+ *  service. If a price changes there, change it here.
  * ==================================================================== */
 
 (function () {
@@ -72,7 +73,16 @@
        week, roughly two hours a day. */
     supportHourlyRate: 105,
     supportMonthlyPerWeeklyHour: 455,
-    supportMinimumWeeklyHours: 10
+    supportMinimumWeeklyHours: 10,
+
+    /* NZ-India FTA, mirrors the "What It Costs" table on india.html. */
+    indiaFeasibility: 7500,
+    indiaEntityStructuring: 4500,
+    indiaCaptiveFeasibility: 8500,
+    indiaTpCharacterisation: 1400,
+    indiaSafeHarbour: 2400,
+    indiaTpDocumentation: 9500,
+    indiaOngoingCompliance: 3600
   };
 
   /* --------------------------- loading factors ---------------------
@@ -145,7 +155,8 @@
     budget: 3200,        /* Annual Budget Build */
     audit: 5600,         /* Internal audit, one area */
     accreditation: 3000, /* Project work */
-    chp: 2800            /* CHP Registration Readiness */
+    chp: 2800,           /* CHP Registration Readiness */
+    india: 1400          /* Transfer Pricing Characterisation Review, the cheapest standalone line */
   };
 
   function serviceFloor(id, a) {
@@ -1236,6 +1247,129 @@
     }
   });
 
+  SERVICES.push({
+    id: 'india',
+    name: 'NZ-India FTA',
+    blurb: 'Testing whether India stacks up, structuring it properly, and staying compliant at both ends.',
+    uses: ['deadline'],
+    questions: [
+      {
+        id: 'india_angle',
+        multi: true,
+        q: 'What are you weighing up?',
+        hint: 'Select all that apply. This is the business case before you commit a dollar, including the honest version where the answer is no.',
+        options: [
+          {
+            v: 'market',
+            label: 'Selling into India, buying from India, or a sales or service base there',
+            sub: 'A business case for your bank or board: market size, landed costs, and distributor-versus-your-own-entity, modelled over three years'
+          },
+          {
+            v: 'captive',
+            label: 'A captive or shared-services unit doing work for your own business',
+            sub: 'A three-year cost comparison against staying here: salaries, attrition, property, and the point an entity beats an Employer of Record'
+          },
+          { v: 'none', label: 'Not sure yet, or something else entirely', exclusive: true }
+        ]
+      },
+      {
+        id: 'india_entity',
+        q: 'Do you need help structuring the New Zealand side of an Indian entity?',
+        hint: 'The right vehicle for you (subsidiary, branch office, liaison office or LLP: a branch is taxed as a foreign company at a materially higher rate, so it matters), the intercompany agreements and transfer pricing policy you need from day one, and a model of what a rupee of Indian profit actually lands as in New Zealand after tax, withholding and imputation.',
+        options: [
+          { v: 'yes', label: 'Yes' },
+          { v: 'no', label: 'No' }
+        ]
+      },
+      {
+        id: 'india_tp_route',
+        showIf: function (a) { return (a.india_angle || []).indexOf('captive') !== -1; },
+        q: 'Where does your captive sit with transfer pricing?',
+        hint: 'India reset its safe harbour rules this year: a simple election can now replace a costly benchmarking study, but only if the Indian entity is genuinely low-risk, meaning work directed from New Zealand, IP owned in New Zealand, and commercial risk carried in New Zealand.',
+        options: [
+          { v: 'unsure', label: 'Not sure, check eligibility first', sub: 'A transfer pricing characterisation review, a clear yes or no on safe harbour' },
+          { v: 'safe_harbour', label: 'We qualify for safe harbour', sub: 'Your safe harbour election, prepared and filed' },
+          { v: 'full_tp', label: 'We do not qualify, or are not electing it', sub: 'Full transfer pricing documentation, holding up to Inland Revenue and India’s tax authority' },
+          { v: 'none', label: 'Not needed yet' }
+        ]
+      },
+      {
+        id: 'india_compliance',
+        q: 'Will you need ongoing New Zealand compliance once the entity is up and running?',
+        hint: 'Your annual CFC disclosure (IR458), filed; the controlled foreign company and active business tests, checked; thin capitalisation limits on interest deductions, checked; Indian tax already paid, credited against your New Zealand bill; and the Indian entity folded into your consolidated group accounts.',
+        options: [
+          { v: 'yes', label: 'Yes' },
+          { v: 'no', label: 'No, or not yet' }
+        ]
+      }
+    ],
+    price: function (a) {
+      var lines = [];
+      var notes = [];
+      var angle = Array.isArray(a.india_angle) ? a.india_angle : [];
+
+      if (angle.indexOf('market') !== -1) {
+        lines.push({
+          label: 'Feasibility study',
+          amount: RATES.indiaFeasibility,
+          fixed: true
+        });
+      }
+
+      if (angle.indexOf('captive') !== -1) {
+        lines.push({
+          label: 'Captive unit feasibility',
+          amount: RATES.indiaCaptiveFeasibility,
+          fixed: true
+        });
+        notes.push(
+          'Captive feasibility covers salary benchmarking by role and city, attrition assumptions, property and employer costs, and a three-year total cost of ownership against doing the same work here, including the point at which an entity becomes cheaper than hiring through an Employer of Record.'
+        );
+      }
+
+      if (a.india_entity === 'yes') {
+        lines.push({
+          label: 'Entity structuring, New Zealand side',
+          amount: RATES.indiaEntityStructuring,
+          fixed: true
+        });
+      }
+
+      if (a.india_tp_route === 'unsure') {
+        lines.push({
+          label: 'Transfer pricing characterisation review',
+          amount: RATES.indiaTpCharacterisation,
+          fixed: true
+        });
+      } else if (a.india_tp_route === 'safe_harbour') {
+        lines.push({
+          label: 'Safe harbour election',
+          amount: RATES.indiaSafeHarbour,
+          fixed: true
+        });
+        notes.push(
+          'Electing safe harbour bars the Mutual Agreement Procedure under the tax treaty for that transaction: certainty in exchange for a dispute route you would likely never use. The election is filed by 30 June of the first year.'
+        );
+      } else if (a.india_tp_route === 'full_tp') {
+        lines.push({
+          label: 'Transfer pricing documentation',
+          amount: RATES.indiaTpDocumentation,
+          fixed: true
+        });
+      }
+
+      if (a.india_compliance === 'yes') {
+        lines.push({
+          label: 'Ongoing New Zealand compliance, per year',
+          amount: RATES.indiaOngoingCompliance,
+          fixed: true
+        });
+      }
+
+      return { lines: lines, notes: notes };
+    }
+  });
+
   /* ------------------------------- engine -------------------------- */
 
   function money(n) {
@@ -1457,7 +1591,6 @@
     answers: {},
     stage: 'build',
     details: { name: '', org: '', email: '', note: '' },
-    copied: false,
     sending: false,
     error: '',
     result: null
@@ -1581,99 +1714,17 @@
     );
   }
 
-  function resultHTML(result) {
-    var body;
-
+  function gateHTML(result) {
     if (result.empty) {
-      body =
+      return (
+        '<section class="es-result">' +
         '<p class="es-result-label">Nothing to quote</p>' +
-        '<p class="es-nothing">From your answers it doesn’t look like you need us right now, which is a perfectly good outcome. If you would like a second opinion on that, the first kōrero is free.</p>';
-    } else {
-      var figure = result.exact
-        ? '$' + money(result.exact)
-        : '$' + money(result.low) + ' <span class="es-dash">–</span> $' + money(result.high);
-
-      var groupHTML = function (g, suffix) {
-        var rows = g.lines.map(function (l) {
-          return (
-            '<div class="es-bd-row"><span>' + esc(l.label) + '</span>' +
-            '<span class="es-bd-fig">$' + money(l.amount) + suffix + '</span></div>'
-          );
-        }).join('');
-        return '<div class="es-group"><p class="es-group-name">' + esc(g.name) + '</p>' + rows + '</div>';
-      };
-
-      var breakdown =
-        result.groups.map(function (g) { return groupHTML(g, ''); }).join('') +
-        result.recurringGroups.map(function (g) { return groupHTML(g, ' a month'); }).join('');
-
-      var factored = result.factors.length
-        ? '<div class="es-factored"><p class="es-factored-head">Also factored in</p><ul>' +
-          result.factors.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') +
-          '</ul></div>'
-        : '';
-
-      var notes = result.notes.map(function (n) {
-        return '<p class="es-note">' + esc(n) + '</p>';
-      }).join('');
-
-      var tight = result.tightFit
-        ? '<p class="es-flag"><strong>A note on your timeframe.</strong> A job this size inside three months is tight, and depending on what else is booked it may not be achievable. We would rather say so now than take the work and miss your date.</p>'
-        : '';
-
-      var headline = '';
-
-      if (result.hasOneOff) {
-        headline +=
-          '<p class="es-result-label">' +
-          (result.exact ? 'Fixed price' : 'Indicative range') +
-          (result.monthly > 0 ? ', one-off' : '') + '</p>' +
-          '<p class="es-range">' + figure + '</p>' +
-          '<p class="es-gst">excluding GST</p>';
-      }
-
-      if (result.monthly > 0) {
-        headline +=
-          '<div class="es-monthly">' +
-          '<p class="es-result-label">' +
-          (result.hasOneOff ? 'And then, every month' : 'Monthly retainer') + '</p>' +
-          '<p class="es-range">$' + money(result.monthly) +
-          '<span class="es-per"> a month</span></p>' +
-          '<p class="es-gst">excluding GST, billed monthly</p>' +
-          '</div>';
-      }
-
-      body =
-        headline +
-        '<p class="es-extras"><strong>What is not in ' +
-        (result.hasOneOff && result.monthly > 0 ? 'these figures' : 'this figure') +
-        '.</strong> GST, and travel and accommodation. ' +
-        'Where the work needs us on site, travel is charged at cost on top of the fee, and we agree it with you ' +
-        'in writing before anything is booked.</p>' +
-        '<div class="es-breakdown">' + breakdown + '</div>' +
-        factored + notes + tight;
+        '<p class="es-nothing">From your answers it doesn’t look like you need us right now, which is a perfectly good outcome. If you would like a second opinion on that, the first kōrero is free.</p>' +
+        '<div class="es-actions"><a class="es-cta" href="/contact.html">Have a kōrero anyway</a></div>' +
+        '</section>'
+      );
     }
 
-    var share = result.empty
-      ? ''
-      : '<div class="es-share es-noprint">' +
-        '<button type="button" class="es-secondary" data-act="copy">' +
-        (state.copied ? 'Copied' : 'Copy summary') + '</button>' +
-        '<button type="button" class="es-secondary" data-act="print">Print or save as PDF</button>' +
-        '</div>';
-
-    return (
-      '<section class="es-result">' + body +
-      '<div class="es-actions es-noprint">' +
-      '<button type="button" class="es-cta" data-act="details">' +
-      (result.empty ? 'Have a kōrero anyway' : 'Get the firm number') +
-      '</button>' + share + '</div>' +
-      '<p class="es-turnaround es-noprint">We will come back to you within 2 working days. Most people need to show this to someone else first, copy or print it and take it with you.</p>' +
-      '</section>'
-    );
-  }
-
-  function detailsHTML() {
     var fields = [
       ['name', 'Your name', 'text'],
       ['org', 'Organisation', 'text'],
@@ -1687,8 +1738,8 @@
 
     return (
       '<section class="es-result">' +
-      '<p class="es-result-label">Your details</p>' +
-      '<p class="es-note" style="margin-top:0">We will use your answers above to put a firm quote together. Nothing goes on a mailing list.</p>' +
+      '<p class="es-result-label">Your estimate is almost ready</p>' +
+      '<p class="es-note" style="margin-top:0">We do not publish prices on the page. Pop in your details and we will email your quote through, broken down line by line. Nothing goes on a mailing list.</p>' +
       '<div class="es-fields">' + fields +
       '<label class="es-field es-field--wide"><span>Anything we should know? (optional)</span>' +
       '<textarea rows="3" data-field="note">' + esc(state.details.note) + '</textarea></label>' +
@@ -1696,10 +1747,9 @@
       (state.error ? '<p class="es-error">' + esc(state.error) + '</p>' : '') +
       '<div class="es-actions">' +
       '<button type="button" class="es-cta" data-act="send"' + (canSend() && !state.sending ? '' : ' disabled') + '>' +
-      (state.sending ? 'Sending…' : 'Send it through') + '</button>' +
-      '<button type="button" class="es-back" data-act="back">Back to my answers</button>' +
+      (state.sending ? 'Sending…' : 'Email me my quote') + '</button>' +
       '</div>' +
-      '<p class="es-turnaround">We will come back to you within 2 working days.</p>' +
+      '<p class="es-turnaround">We will email your quote within 2 working days.</p>' +
       '</section>'
     );
   }
@@ -1710,7 +1760,7 @@
       '<section class="es-result">' +
       '<p class="es-result-label">Received</p>' +
       '<h2 class="es-sent-h">Thanks, ' + esc(first) + '.</h2>' +
-      '<p class="es-note" style="margin-top:0">Your answers are with us. We will come back within 2 working days with a firm number and a note on how we would sequence it.</p>' +
+      '<p class="es-note" style="margin-top:0">Your answers are with us. We will email you a firm, itemised quote within 2 working days, along with a note on how we would sequence it.</p>' +
       '</section>'
     );
   }
@@ -1737,9 +1787,7 @@
       html += pickerHTML() + questionsHTML(questions);
     }
     if (state.stage === 'build' && state.result) {
-      html += resultHTML(state.result);
-    } else if (state.stage === 'details') {
-      html += detailsHTML();
+      html += gateHTML(state.result);
     } else if (state.stage === 'sent') {
       html += sentHTML();
     }
@@ -1788,23 +1836,6 @@
         : base.concat([v]);
   }
 
-  function copySummary() {
-    if (!state.result) return;
-    var text = buildSummary(state.selected, state.result);
-    var done = function () {
-      state.copied = true;
-      render();
-      setTimeout(function () { state.copied = false; render(); }, 2400);
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, function () {
-        window.prompt('Copy your estimate:', text);
-      });
-    } else {
-      window.prompt('Copy your estimate:', text);
-    }
-  }
-
   function send() {
     var body = new URLSearchParams({
       'form-name': 'estimator',
@@ -1834,7 +1865,7 @@
       .catch(function (err) {
         console.error('Estimator submission error:', err);
         state.error =
-          'Sorry, that did not send. Please try again, or email us at support@manaakitech.com and paste in the summary (use Copy summary on the previous screen).';
+          'Sorry, that did not send. Please try again, or email us directly at support@manaakitech.com with what you need help with.';
       })
       .then(function () {
         state.sending = false;
@@ -1853,18 +1884,6 @@
     } else if (act === 'pick') {
       pick(btn.dataset.q, btn.dataset.v);
       render();
-    } else if (act === 'details') {
-      state.stage = 'details';
-      state.error = '';
-      render();
-      root.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else if (act === 'back') {
-      state.stage = 'build';
-      render();
-    } else if (act === 'copy') {
-      copySummary();
-    } else if (act === 'print') {
-      window.print();
     } else if (act === 'send') {
       if (canSend() && !state.sending) send();
     }

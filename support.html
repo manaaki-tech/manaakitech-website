@@ -34,6 +34,14 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-[#F7F4F0] text-gray-800">
+    <!-- Floating page navigation for larger screens -->
+    <nav class="page-nav">
+        <ul>
+            <li><a href="#faq" class="nav-link">FAQ</a></li>
+            <li><a href="#contact-support" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
     <!-- Header Component (Main Site Header) -->
     <div id="header-component" data-component="header"></div>
 
@@ -220,7 +228,7 @@
             </div>
 
             <!-- Contact Support Section -->
-            <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+            <div id="contact-support" class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
                 <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Contact Support</h2>
                 <div class="space-y-6">
                     &nbsp;
@@ -262,8 +270,12 @@
                                 <div class="ml-4">
                                     <h4 class="text-lg font-medium text-gray-900">Phone Support</h4>
                                     <p class="mt-1 text-gray-600">
-                                        Available for Professional and Enterprise customers:
-                                        <span class="font-medium">+64 22 498 6710</span>
+                                        Manaaki Central and technology (Professional and Enterprise customers):
+                                        <a href="tel:+64224986710" class="font-medium text-primary-600 hover:text-primary-800 whitespace-nowrap">022 498 6710</a>
+                                    </p>
+                                    <p class="mt-1 text-gray-600">
+                                        Consulting and NZ-India FTA enquiries:
+                                        <a href="tel:+64272121266" class="font-medium text-primary-600 hover:text-primary-800 whitespace-nowrap">027 212 1266</a>
                                     </p>
                                     <p class="mt-1 text-gray-600">
                                         Hours: Monday-Friday, 9am-5pm NZST
@@ -326,5 +338,33 @@
 
     <!-- Component Loader -->
     <script src="js/componentLoader.js?v=1"></script>
+
+    <!-- Page Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            const sections = Array.from(navLinks)
+                .map(link => document.querySelector(link.getAttribute('href')))
+                .filter(Boolean);
+
+            function highlightNavOnScroll() {
+                const scrollPosition = window.scrollY;
+                let currentId = null;
+
+                sections.forEach(section => {
+                    if (scrollPosition >= section.offsetTop - 100) {
+                        currentId = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+                });
+            }
+
+            window.addEventListener('scroll', highlightNavOnScroll);
+            highlightNavOnScroll();
+        });
+    </script>
 </body>
 </html>
