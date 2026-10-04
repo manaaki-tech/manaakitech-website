@@ -4,23 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manaaki Central | Whanau-Centred Management Platform</title>
-    <meta name="description" content="Manaaki Central: A comprehensive case management platform designed with whanau-centred principles for social services organisations.">
+    <title>Manaaki Central | Whānau-Centred Management Platform</title>
+    <meta name="description" content="Manaaki Central: A comprehensive case management platform designed with whānau-centred principles for social services organisations.">
 
     <!-- OG + Canonical -->
-    <meta property="og:title" content="Manaaki Central | Whanau-Centred Management Platform">
-    <meta property="og:description" content="Manaaki Central: A comprehensive case management platform designed with whanau-centred principles for social services organisations.">
+    <meta property="og:title" content="Manaaki Central | Whānau-Centred Management Platform">
+    <meta property="og:description" content="Manaaki Central: A comprehensive case management platform designed with whānau-centred principles for social services organisations.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://manaakitech.com/product.html">
     <link rel="canonical" href="https://manaakitech.com/product.html">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind + Config -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,6 +33,16 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* This page's nav labels are short, so it needs less clearance than
+           the sitewide default (sized for the longest label, on services.html). */
+        @media (min-width: 641px) {
+            body:has(.page-nav) {
+                padding-right: 200px;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-[#F7F4F0] text-gray-800">
@@ -41,7 +53,7 @@
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#features" class="nav-link">Features</a></li>
             <li><a href="#benefits" class="nav-link">Benefits</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="#contact-component" class="nav-link">Contact</a></li>
         </ul>
     </nav>
     <div id="header-component" data-component="header"></div>
@@ -53,10 +65,10 @@
     <section id="overview" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900">A Client Journey Management Solution, built by the Community for the Community
+                <h2 class="text-3xl font-bold text-gray-900">A Client Journey Management Solution, Built By The Community For The Community
                 </h2>
                 <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Designed with cultural responsiveness at its
-                    core, Manaaki Central empowers social service providers to deliver better outcomes for whanau.</p>
+                    core, Manaaki Central empowers social service providers to deliver better outcomes for whānau.</p>
             </div>
 
             <div class="text-center max-w-3xl mx-auto">
@@ -80,7 +92,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                             </svg>
                         </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Community-Centered</h4>
+                        <h4 class="font-semibold text-gray-900 mb-2">Community-Centred</h4>
                         <p class="text-sm text-gray-600">Designed by and for the community</p>
                     </div>
                     <div class="text-center">
@@ -89,7 +101,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                             </svg>
                         </div>
-                        <h4 class="font-semibold text-gray-900 mb-2">Secure & Compliant</h4>
+                        <h4 class="font-semibold text-gray-900 mb-2">Secure &amp; Compliant</h4>
                         <p class="text-sm text-gray-600">Enterprise-grade security standards</p>
                     </div>
                     <div class="text-center">
@@ -113,23 +125,23 @@
                 <div>
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Manaaki Tech</h2>
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        Based in New Zealand, Manaaki Tech is committed to creating technology solutions that honor and support
-                        diverse communities worldwide. Our name "Manaaki" reflects our core values of hospitality, care, and
+                        Based in New Zealand, we are a small team building technology that honours and supports the
+                        communities we work with. Our name, Manaaki, reflects our core values: hospitality, care, and
                         respect for all people.
                     </p>
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Manaaki Central represents our first step in revolutionizing how social services connect with and support
-                        families globally, ensuring cultural values are embedded in every interaction.
+                        Manaaki Central is our first step: helping social services connect with and support whānau, with
+                        cultural values built into how it works rather than added on afterwards.
                     </p>
-                    <a href="#contact" class="btn btn-outline text-primary-700 border-primary-700 hover:bg-primary-50 px-6 py-3 text-base">
+                    <a href="/contact.html" class="btn btn-outline text-primary-700 border-primary-700 hover:bg-primary-50 px-6 py-3 text-base">
                         Contact us
                     </a>
                 </div>
                 <div class="bg-gray-50 rounded-lg p-8 border border-gray-200">
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h3>
                     <p class="text-gray-700 leading-relaxed">
-                        To empower social service providers worldwide with culturally responsive technology that strengthens
-                        communities and improves outcomes for families everywhere.
+                        To give social service providers technology that fits how they actually work, so more of their
+                        time goes to whānau and less to admin.
                     </p>
                 </div>
             </div>

@@ -58,7 +58,7 @@ class ComponentLoader {
           document.body.removeChild(overlay);
         }
         document.body.style.overflow = ''; // Restore scrolling
-      }, 500); // Match the fade-out animation duration
+      }, 200); // Match the fade-out animation duration
     } else {
       // If there's no overlay but the body is still hidden, make it visible
       document.body.style.visibility = 'visible';
@@ -71,7 +71,8 @@ class ComponentLoader {
     if (this.criticalComponents.includes(componentName)) {
       const allCriticalLoaded = this.criticalComponents.every(name => {
         const element = document.querySelector(`[data-component="${name}"]`);
-        return element && element.classList.contains('component-loaded');
+        // Only wait for critical components this page actually has (most pages have no hero)
+        return !element || element.classList.contains('component-loaded');
       });
       
       if (allCriticalLoaded && !this.criticalComponentsLoaded) {
@@ -161,6 +162,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Add CSS for loading overlay
 const style = document.createElement('style');
 style.textContent = `
+  /* Always show the scrollbar track so the page does not shift sideways when the loading overlay goes away */
+  html {
+    overflow-y: scroll;
+  }
+
   #page-loading-overlay {
     position: fixed;
     top: 0;
@@ -172,7 +178,7 @@ style.textContent = `
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.2s ease;
   }
   
   #page-loading-overlay.fade-out {

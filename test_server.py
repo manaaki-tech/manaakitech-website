@@ -5,6 +5,9 @@ import webbrowser
 import os
 import sys
 
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8")
+
 def start_server(port=8000):
     """Start a local HTTP server for testing the website"""
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -16,8 +19,11 @@ def start_server(port=8000):
             self.send_header('Expires', '0')
             super().end_headers()
     
+    class ThreadingHTTPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+        daemon_threads = True
+
     try:
-        with socketserver.TCPServer(("", port), CustomHTTPRequestHandler) as httpd:
+        with ThreadingHTTPServer(("", port), CustomHTTPRequestHandler) as httpd:
             print(f"✅ Server started at http://localhost:{port}")
             print("📁 Serving files from:", os.getcwd())
             print("🌐 Opening browser...")

@@ -4,23 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manaaki Tech | Technology & Consulting for Communities</title>
-    <meta name="description" content="Manaaki Tech offers Manaaki Central - a whanau-centred case management platform - and specialist Consultancy Services for SMEs and not-for-profits.">
+    <title>Manaaki Tech | Technology &amp; Consulting for Communities</title>
+    <meta name="description" content="Manaaki Tech offers Manaaki Central - a whānau-centred case management platform - and specialist Consulting Services for SMEs and not-for-profits.">
 
     <!-- OG + Canonical -->
-    <meta property="og:title" content="Manaaki Tech | Technology & Consulting for Communities">
-    <meta property="og:description" content="Manaaki Tech offers Manaaki Central - a whanau-centred case management platform - and specialist Consultancy Services for SMEs and not-for-profits.">
+    <meta property="og:title" content="Manaaki Tech | Technology &amp; Consulting for Communities">
+    <meta property="og:description" content="Manaaki Tech offers Manaaki Central - a whānau-centred case management platform - and specialist Consulting Services for SMEs and not-for-profits.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://manaakitech.com/">
     <link rel="canonical" href="https://manaakitech.com/">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind + Config -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -47,46 +49,22 @@
         }
 
         .hero-bg {
-            background: linear-gradient(135deg, #2c5d5f 0%, #3d6b50 30%, #7a6535 65%, #b8860b 100%);
+            background: var(--teal-deep);
             position: relative;
             overflow: hidden;
         }
 
-        /* Subtle wave decoration */
+        /* Same base edge as every other hero on the site. */
         .hero-bg::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: 0;
             left: 0;
             right: 0;
-            height: 60px;
-            background: #F7F4F0;
-            clip-path: ellipse(55% 100% at 50% 100%);
+            height: 3px;
+            background: linear-gradient(90deg, var(--terracotta) 0%, #C9713F 55%, var(--gold) 100%);
         }
 
-        /* Decorative koru-inspired circles */
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.04);
-            pointer-events: none;
-        }
-
-        .hero-circle-2 {
-            position: absolute;
-            bottom: -60px;
-            left: -60px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.03);
-            pointer-events: none;
-        }
 
         .card-central {
             background: linear-gradient(145deg, #134e4a 0%, #0f766e 60%, #0d9488 100%);
@@ -171,19 +149,36 @@
             background: rgba(255,255,255,0.12);
             color: #fcd34d;
         }
+
+        /* This page's nav labels are short, so it needs less clearance than
+           the sitewide default (sized for the longest label, on services.html). */
+        @media (min-width: 641px) {
+            body:has(.page-nav) {
+                padding-right: 200px;
+            }
+        }
     </style>
 </head>
 
 <body class="text-gray-800">
 
+    <!-- Floating page navigation for larger screens -->
+    <nav class="page-nav">
+        <ul>
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#offerings" class="nav-link">Offerings</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
     <div id="header-component" data-component="header"></div>
 
     <!-- Hero -->
-    <section class="hero-bg py-20 md:py-28 text-white text-center">
-        <div class="hero-circle-2"></div>
+    <section id="home" class="hero-bg py-16 md:py-24 text-white text-center">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <p class="text-amber-200 text-sm uppercase tracking-widest mb-5 fade-up fade-up-1">Manaaki Tech</p>
-            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 fade-up fade-up-2">
+            <p class="hero-eyebrow mb-5 fade-up fade-up-1">Manaaki Tech</p>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 fade-up fade-up-2">
                 Technology &amp; Expertise<br>
                 <span class="text-amber-200">for Communities</span>
             </h1>
@@ -194,10 +189,10 @@
     </section>
 
     <!-- Two Offerings -->
-    <section class="py-16 md:py-24 bg-[#F7F4F0]">
+    <section id="offerings" class="pt-10 md:pt-14 pb-16 md:pb-24 bg-[#F7F4F0]">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div class="text-center mb-12 fade-up fade-up-1">
+            <div class="text-center mb-10 fade-up fade-up-1">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">What We Offer</h2>
                 <p class="text-gray-500 text-lg">Two ways we help organisations like yours thrive.</p>
             </div>
@@ -211,7 +206,7 @@
                     </div>
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">Manaaki<br>Central</h2>
                     <p class="text-teal-100 text-base leading-relaxed mb-6">
-                        A whanau-centred case management platform built for social services organisations. Manage client journeys, reporting, and team workflows - all in one place, with cultural responsiveness at the core.
+                        A whānau-centred case management platform built for social services organisations. Manage client journeys, reporting, and team workflows - all in one place, with cultural responsiveness at the core.
                     </p>
 
                     <div class="flex flex-wrap gap-2 mb-8">
@@ -242,7 +237,7 @@
                 <!-- Consultancy Services -->
                 <div class="offering-card card-services rounded-2xl p-8 md:p-10 fade-up fade-up-3">
                     <div>
-                        <span class="card-badge badge-services">Consultancy Services</span>
+                        <span class="card-badge badge-services">Consulting Services</span>
                     </div>
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">Expert<br>Consulting</h2>
                     <p class="text-amber-100 text-base leading-relaxed mb-6">
@@ -269,7 +264,7 @@
                     </div>
 
                     <a href="/services.html" class="card-cta cta-services">
-                        View Consultancy Services
+                        View Consulting Services
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
                 </div>
@@ -279,13 +274,13 @@
     </section>
 
     <!-- About strip -->
-    <section class="py-14 bg-white border-t border-gray-100">
+    <section id="about" class="py-14 bg-white border-t border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up fade-up-1">
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">About Manaaki Tech</h2>
             <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                Based in New Zealand, we're a small team committed to building technology and providing expertise that genuinely helps communities. Our name - <em>Manaaki</em> - reflects our core values: hospitality, care, and respect for all people.
+                Based in New Zealand, we are a small team committed to building technology and providing expertise that genuinely helps communities. Our name - <em>Manaaki</em> - reflects our core values: hospitality, care, and respect for all people.
             </p>
-            <a href="/product.html#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-primary-600 text-primary-700 font-semibold hover:bg-primary-50 transition-colors">
+            <a href="/contact.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-primary-600 text-primary-700 font-semibold hover:bg-primary-50 transition-colors">
                 Get in touch
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -296,6 +291,34 @@
 
     <!-- Component Loader -->
     <script src="js/componentLoader.js?v=1"></script>
+
+    <!-- Page Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            const sections = Array.from(navLinks)
+                .map(link => document.querySelector(link.getAttribute('href')))
+                .filter(Boolean);
+
+            function highlightNavOnScroll() {
+                const scrollPosition = window.scrollY;
+                let currentId = null;
+
+                sections.forEach(section => {
+                    if (scrollPosition >= section.offsetTop - 100) {
+                        currentId = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+                });
+            }
+
+            window.addEventListener('scroll', highlightNavOnScroll);
+            highlightNavOnScroll();
+        });
+    </script>
 </body>
 
 </html>

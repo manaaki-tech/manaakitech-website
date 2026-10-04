@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Manaaki Tech</title>
+    <meta name="description" content="Talk to us about consulting support with your finances, risk, policies or accreditation, or about Manaaki Central. The first conversation is free.">
+
+    <!-- OG + Canonical -->
+    <meta property="og:title" content="Contact Us | Manaaki Tech">
+    <meta property="og:description" content="Talk to us about consulting support with your finances, risk, policies or accreditation, or about Manaaki Central. The first conversation is free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manaakitech.com/contact.html">
+    <link rel="canonical" href="https://manaakitech.com/contact.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind + Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-[#F7F4F0] text-gray-800">
+
+    <div id="header-component" data-component="header"></div>
+
+    <!-- Hero Banner -->
+    <section class="hero-gradient text-white py-12 md:py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-primary-200 text-sm uppercase tracking-widest mb-4 fade-up">Manaaki Tech</p>
+            <h1 class="text-3xl md:text-5xl font-bold mb-6 fade-up fade-up-delay-1">Talk To Us</h1>
+            <p class="text-lg md:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed fade-up fade-up-delay-2">
+                The first conversation is free, and we will tell you honestly what you need - which is sometimes less than you think.
+            </p>
+        </div>
+    </section>
+
+    <!-- What we can help with -->
+    <section class="py-10 md:py-14 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-6 fade-up">
+                <div class="service-card">
+                    <h2 class="font-bold text-gray-900 mb-2">Consulting</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed">Financial review and budgeting, risk frameworks and registers, policies, internal audit, accreditation and CHP registration. If you already know roughly what you need, the <a href="/estimator.html" class="text-primary-600 hover:text-primary-800 underline">estimator</a> will give you a figure before you even speak to us.</p>
+                </div>
+                <div class="service-card">
+                    <h2 class="font-bold text-gray-900 mb-2">NZ-India FTA</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed">Setting up a base in India, selling into it, or buying from it. We test whether it stacks up before you commit, then handle both ends. More on the <a href="/india.html" class="text-primary-600 hover:text-primary-800 underline">NZ-India FTA page</a>.</p>
+                </div>
+                <div class="service-card">
+                    <h2 class="font-bold text-gray-900 mb-2">Manaaki Central</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed">Our whānau-centred case management platform. Ask us for a demo, or for a straight answer about whether it suits how your team actually works. More on the <a href="/product.html" class="text-primary-600 hover:text-primary-800 underline">Manaaki Central page</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="contact-component" data-component="contact"></div>
+
+    <div id="footer-component" data-component="footer"></div>
+
+    <!-- Component Loader -->
+    <script src="js/componentLoader.js?v=1"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

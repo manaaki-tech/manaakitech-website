@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultancy Services | Manaaki Tech</title>
-    <meta name="description" content="Financial consulting, accreditation support, and business improvement services for SMEs, not-for-profits, and social service organisations.">
+    <title>Consulting Services | Manaaki Tech</title>
+    <meta name="description" content="Financial review and strategy, risk and governance, accreditation support, and business planning for small businesses, not-for-profits, and social service organisations.">
 
     <!-- OG + Canonical -->
-    <meta property="og:title" content="Consultancy Services | Manaaki Tech">
-    <meta property="og:description" content="Financial consulting, accreditation support, and business improvement services for SMEs, not-for-profits, and social service organisations.">
+    <meta property="og:title" content="Consulting Services | Manaaki Tech">
+    <meta property="og:description" content="Financial review and strategy, risk and governance, accreditation support, and business planning for small businesses, not-for-profits, and social service organisations.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://manaakitech.com/services.html">
     <link rel="canonical" href="https://manaakitech.com/services.html">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind + Config -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,25 +36,38 @@
 
 <body class="bg-[#F7F4F0] text-gray-800">
 
+    <!-- Floating page navigation for larger screens -->
+    <nav class="page-nav">
+        <ul>
+            <li><a href="#overview" class="nav-link">Overview</a></li>
+            <li><a href="#financial-strategy" class="nav-link">Financial</a></li>
+            <li><a href="#risk-governance" class="nav-link">Risk &amp; Governance</a></li>
+            <li><a href="#accreditation" class="nav-link">Accreditation</a></li>
+            <li><a href="#strategy-planning" class="nav-link">Strategy</a></li>
+            <li><a href="#who-we-help" class="nav-link">Who We Help</a></li>
+            <li><a href="/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
     <div id="header-component" data-component="header"></div>
 
     <!-- Hero Banner -->
-    <section class="hero-gradient text-white py-16 md:py-24">
+    <section class="hero-gradient text-white py-12 md:py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-primary-200 text-sm uppercase tracking-widest mb-4 fade-up">Manaaki Tech</p>
-            <h1 class="text-3xl md:text-5xl font-bold mb-6 fade-up fade-up-delay-1">Consultancy Services</h1>
+            <h1 class="text-3xl md:text-5xl font-bold mb-6 fade-up fade-up-delay-1">Consulting Services</h1>
             <p class="text-lg md:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed fade-up fade-up-delay-2">
-                Practical support for organisations that want to strengthen their finances, stay accredited, and keep improving - without the corporate price tag.
+                Practical support for organisations that want to strengthen their finances, manage risk, stay accredited, and keep improving - without the corporate price tag.
             </p>
         </div>
     </section>
 
     <!-- Intro -->
-    <section class="py-12 md:py-16 bg-white">
+    <section id="overview" class="py-8 md:py-10 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center fade-up">
                 <p class="text-lg text-gray-600 leading-relaxed">
-                    We work alongside small businesses, community organisations, and social service providers - the kind of organisations that do important mahi but don't always have a full finance team behind them. Whether you need help getting your numbers right, preparing for an accreditation review, or tidying up how things run day to day, we're here to help.
+                    We work alongside small businesses, community organisations, and social service providers - the kind of organisations doing important mahi for their communities, without a full finance team behind them. We are deliberately small and deliberately senior, and where a job needs a specialist we are not, we bring in the right one.
                 </p>
             </div>
         </div>
@@ -62,138 +77,278 @@
     <section class="py-12 md:py-20 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <!-- Financial Consulting -->
-            <div class="mb-16 fade-up">
+            <!-- 1. Financial Review & Strategy -->
+            <div id="financial-strategy" class="mb-16 fade-up">
                 <div class="flex items-center mb-3">
                     <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                         <svg class="h-5 w-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Financial Consulting</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Financial Review &amp; Strategy</h2>
                 </div>
                 <div class="section-divider mb-8 ml-14"></div>
                 <p class="text-gray-600 mb-8 ml-14 text-lg leading-relaxed">
-                    Clear, honest financial support so you always know where you stand.
+                    We do not do your bookkeeping or file your returns. We work alongside whoever already does - reviewing the numbers, explaining what they mean, and helping you plan.
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-6 ml-14">
                     <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Monthly Management Accounts</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">We put together your monthly numbers in a way that actually makes sense - so you can see what's working and what needs attention.</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Management Accounts Review</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">We take what your bookkeeper or finance officer produces and tell you what it actually says - what is working, what is drifting, and what needs a decision.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Board &amp; Committee Reporting</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Turning the numbers into something a board can govern from, rather than a spreadsheet nobody reads.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Budgets &amp; Annual Planning</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Building the budget with you, testing the assumptions, and giving you something you can hold people to.</p>
                     </div>
                     <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Cashflow Forecasting</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Know what's coming in and going out, weeks and months ahead. No surprises, just better planning.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Rolling forecasts so you can see the tight months before you are in them.</p>
                     </div>
                     <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Budgets & Financial Modelling</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Whether you're applying for funding, planning a new project, or just trying to get a handle on costs - we'll help you build a clear picture.</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Financial Modelling</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">New services, new sites, funding applications, scenario testing - a clear picture before you commit.</p>
                     </div>
                     <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Financial Statements & Reporting</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Year-end financials, board reports, funder reporting - prepared properly and on time, every time.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">GST, PAYE & Compliance</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Stay on top of your tax obligations without the stress. We'll make sure you're meeting your responsibilities to IRD.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Funder & Contract Financial Reporting</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">We know what funders and government agencies expect. We'll help you report clearly and meet your contract conditions.</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Funder &amp; Contract Financial Reporting</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">We know what funders and government agencies expect, and how to report against contract conditions. This is judgement about what a funder needs to see, not form-filling.</p>
                     </div>
                     <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Financial Health Checks</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">A fresh set of eyes on your finances. We'll spot risks, gaps, and opportunities you might be missing.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">A fresh set of eyes on where you actually stand.</p>
                     </div>
+                </div>
+
+                <!-- Virtual CFO -->
+                <div class="ml-14 mt-8 bg-white rounded-lg border-2 border-primary-200 p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Ongoing Finance, Risk &amp; Assurance Partner For Small To Medium Organisations</h3>
+                    <div class="space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Not every organisation needs a full-time finance lead, and most of the ones we work with could not fund one. Virtual CFO support gives you that seniority part-time instead - someone who reads the numbers with you, helps you prepare for the board meeting, sees the tight months coming, and is on the end of the phone when a funder asks something you have not been asked before.
+                        </p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            It works alongside whoever already does your bookkeeping and filing. We are not replacing them, and you do not need to change anything to get started.
+                        </p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Our minimum is <span class="font-semibold text-gray-900">10 hours a week</span>, roughly two hours a day. Below that we cannot know your organisation well enough to be worth the money. The estimator will price it for the hours you need.
+                        </p>
+                    </div>
+                    <a href="/estimator.html" class="inline-flex items-center gap-2 mt-4 text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors">
+                        Work out your price
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="ml-14 mt-6 bg-white border-l-4 border-primary-200 rounded-r-lg p-5">
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        <span class="font-semibold text-gray-900">What we do not do:</span> bookkeeping, GST and PAYE filing, or year-end tax returns. Plenty of people do that well and cheaply, and we will happily work alongside yours.
+                    </p>
                 </div>
             </div>
 
-            <!-- Accreditation & Quality Assurance -->
-            <div class="mb-16 fade-up fade-up-delay-2">
+            <!-- 2. Risk, Governance & Assurance -->
+            <div id="risk-governance" class="mb-16 fade-up fade-up-delay-1">
                 <div class="flex items-center mb-3">
                     <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                         <svg class="h-5 w-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                         </svg>
                     </div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Accreditation & Quality Assurance</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Risk, Governance &amp; Assurance</h2>
                 </div>
                 <div class="section-divider mb-8 ml-14"></div>
                 <p class="text-gray-600 mb-8 ml-14 text-lg leading-relaxed">
-                    Helping social services organisations get accredited - and stay accredited - without the overwhelm.
+                    Sensible controls, current policies, and a board that can see clearly. Nothing over the top - just what is needed.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 ml-14">
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Risk Management Framework</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">How your organisation identifies, assesses, and treats risk, built on policies kaimahi actually follow. Written to ISO 31000:2018, with a risk register template your team can use. We build it, refresh it, or review it and tell you honestly whether it holds up.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Risk Register</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">The working tool behind the framework: the risks you face, who owns each one, and the controls in place. We build it, refresh it, or review it and flag any gaps, an outside view that is hard to get internally.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Facilitated Risk Workshops</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">A register written at a desk is a list. Written in a room with the people who carry the risks, it is a register. We run leadership and board sessions separately: kaimahi know what goes wrong, and your board needs to know what it is accepting.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Corporate &amp; Board Policies</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Everyday HR, finance, and IT policies, plus those your board operates under. We build what is missing, refresh what has drifted from how kaimahi work, or review what you have and tell you honestly where it holds up.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Internal Audit &amp; Assurance</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">You tell us what your controls are meant to be; we test whether that is what actually happens. You get working papers you can hand to an assessor, and a report with findings rated by significance and a management response column for your team.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Annual Internal Audit Programme</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">A plan built from your risk register, reviews through the year, and findings presented each time to whoever needs to hear them. For organisations whose funders are starting to ask who checks the checking.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Presenting the Findings</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">We will come and talk your audit and risk committee, your board, or your senior leadership team through what we found. Each group hears it differently, and we prepare for the room we are in.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Financial Controls &amp; Delegations</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Segregation of duties, approval thresholds, bank access, and fraud-prevention basics.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Governance Support</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">The right structures so your board and leadership team can do their best mahi, including finance committee and audit committee support.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Business Continuity Planning</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">A comprehensive plan so your kaupapa keeps going when things get tough.</p>
+                    </div>
+                </div>
+
+                <!-- Internal audit coverage -->
+                <div class="ml-14 mt-8 bg-white rounded-lg border border-gray-200 p-6 md:p-8">
+                    <h3 class="font-bold text-gray-900 mb-4">What An Internal Audit Can Cover</h3>
+                    <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                        <p class="text-gray-600 text-sm leading-relaxed"><span class="font-semibold text-gray-900">Financial controls and delegations</span> - approvals, thresholds, bank access, segregation of duties.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed"><span class="font-semibold text-gray-900">Sensitive expenditure</span> - travel, hospitality, koha, credit cards, gifts, personal use of assets.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed"><span class="font-semibold text-gray-900">Revenue and funding leakage</span> - under-claimed contract milestones, unbilled services, rent arrears and vacancy loss.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed"><span class="font-semibold text-gray-900">Payroll and Holidays Act</span> - leave calculations, timesheets, allowances, historical liability.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed"><span class="font-semibold text-gray-900">Contract and funder compliance</span> - are you delivering what the contract says, and is the reporting accurate.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed"><span class="font-semibold text-gray-900">Restricted and tied funds</span> - whether money given for a purpose was spent on that purpose.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed"><span class="font-semibold text-gray-900">Procurement, conflicts and gifts</span> - supplier selection, related parties, the interests register.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed"><span class="font-semibold text-gray-900">Case file and service delivery</span> - sampling against your own standards, the way an assessor would.</p>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <h4 class="font-semibold text-gray-900 mb-2">Three worth singling out</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Sensitive expenditure, revenue leakage and Holidays Act compliance are where we most often find something worth fixing. Revenue leakage in particular tends to pay for itself.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <h4 class="font-semibold text-gray-900 mb-2">On Independence</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Usually we are testing controls your own people designed, which raises no issue at all. The exception is where we have written the policies or built the risk register ourselves, because then we would be testing against criteria we wrote. In that case we limit our testing to the areas we have not touched, or help you find an independent reviewer, and we say which in the report. Our internal audit work is advisory - it is not an assurance engagement and it does not replace your external statutory audit/review.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Accreditation & Quality Assurance -->
+            <div id="accreditation" class="mb-16 fade-up fade-up-delay-2">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <svg class="h-5 w-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Accreditation &amp; Quality Assurance</h2>
+                </div>
+                <div class="section-divider mb-8 ml-14"></div>
+                <p class="text-gray-600 mb-8 ml-14 text-lg leading-relaxed">
+                    Helping social service organisations get accredited - and stay accredited - without the overwhelm.
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-6 ml-14">
                     <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Accreditation Preparation</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Getting ready for your accreditation review? We'll walk you through what's needed, identify gaps, and help you get everything in order.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">We will walk you through what is needed, identify gaps, and help you get everything in order.</p>
                     </div>
                     <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Maintaining Accreditation</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Already accredited but finding it hard to keep up? We'll help you stay on track between reviews so nothing slips through the cracks.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Stay on track between reviews so nothing slips through the cracks.</p>
                     </div>
                     <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Policy & Procedure Reviews</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">We'll check your policies are current, practical, and actually reflect what your team does day to day - not just ticking a box.</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Gap Analysis Against the Standards</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Mapped to the requirements you are actually assessed against.</p>
                     </div>
                     <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Internal Audits & Self-Assessments</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Regular check-ins on how things are going, so you can catch issues early and show reviewers you're on top of it.</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Evidence &amp; Documentation Support</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Getting your files review-ready.</p>
+                    </div>
+                </div>
+
+                <div class="ml-14 mt-8 bg-white rounded-lg border border-gray-200 p-6 md:p-8">
+                    <h3 class="font-bold text-gray-900 mb-3">The Standards We Work To</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        We work with organisations assessed by <span class="font-semibold text-gray-900">Te Kāhui Kāhu</span> against the <span class="font-semibold text-gray-900">Social Sector Accreditation Standards</span> - the framework behind MSD, Oranga Tamariki, Ministry of Justice and Social Investment Agency contracts - and with providers certified against <span class="font-semibold text-gray-900">Ngā Paerewa</span> under the Health and Disability Services (Safety) Act.
+                    </p>
+                    <p class="text-gray-600 text-sm leading-relaxed">If you sit under both, we can handle both. Most consultants do one or the other.</p>
+
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <h4 class="font-semibold text-gray-900 mb-2">Community housing</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            If your organisation has a housing arm, registration with the <span class="font-semibold">Community Housing Regulatory Authority</span> as a Class 1 Social Landlord is a separate regime again. The five performance standards cover governance, management, financial viability, tenancy management, and property and asset management - and financial viability is the one applications most often stall on. It is also the one we are best placed to build. We prepare the application and the evidence; CHRA decides on registration. The application also covers tenancy management and property and asset management, which sit outside the financial side - our small team will work alongside yours to get those parts done too.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <h4 class="font-semibold text-gray-900 mb-2">What we do not do</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            We get you ready for assessment. We do not grant accreditation, issue certification, or audit. Te Kāhui Kāhu grants accreditation on behalf of its partner agencies. Certification against Ngā Paerewa is issued by HealthCERT after an audit by a Designated Auditing Agency you engage separately.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Business Improvement -->
-            <div class="mb-16 fade-up fade-up-delay-3">
+            <!-- 4. Strategy & Planning -->
+            <div id="strategy-planning" class="mb-16 fade-up fade-up-delay-3">
                 <div class="flex items-center mb-3">
                     <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                         <svg class="h-5 w-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                         </svg>
                     </div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Business Improvement</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Strategy &amp; Planning</h2>
                 </div>
                 <div class="section-divider mb-8 ml-14"></div>
                 <p class="text-gray-600 mb-8 ml-14 text-lg leading-relaxed">
-                    Small, practical changes that make a real difference to how your organisation runs.
+                    Where you are heading, and what it takes to get there.
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-6 ml-14">
                     <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Process Reviews & Gap Analysis</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">We look at how things actually work in your organisation, find the bottlenecks and gaps, and suggest straightforward fixes.</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Strategic &amp; Business Planning</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Turning intent into a plan with numbers attached.</p>
                     </div>
                     <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Business Continuity Planning</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">What happens if something goes wrong? We'll help you put a simple plan in place so your organisation can keep going when things get tough.</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Feasibility Studies &amp; Business Cases</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">For a new service, a new site, or a new market.</p>
                     </div>
                     <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Risk Management</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">We help you understand the risks your organisation faces and put sensible controls in place - nothing over the top, just what's needed.</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Financial Modelling for Growth</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Scenarios, funding requirements, break-even.</p>
                     </div>
                     <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Governance & Controls</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Good governance doesn't have to be complicated. We'll help you set up the right structures so your board and leadership team can do their best work.</p>
+                        <h3 class="font-semibold text-gray-900 mb-2">Process Review &amp; Gap Analysis</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Find the bottlenecks, and suggest straightforward fixes.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Systems &amp; Workflow Advice</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Too many spreadsheets? We will help you find simpler ways to get things done.</p>
                     </div>
                     <div class="service-card">
                         <h3 class="font-semibold text-gray-900 mb-2">Continuous Improvement Support</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Ongoing, hands-on help to keep getting better at what you do - reviewing what's working, what's not, and making changes that stick.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3 class="font-semibold text-gray-900 mb-2">Systems & Workflow Advice</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Using too many spreadsheets? Processes taking longer than they should? We'll help you find simpler ways to get things done.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Reviewing what is working, what is not, and making changes that stick.</p>
                     </div>
                 </div>
+
+                <p class="text-gray-600 mt-6 ml-14 leading-relaxed">
+                    Weighing up India? See our <a href="/india.html" class="text-primary-600 font-semibold hover:text-primary-700 underline">NZ-India FTA services</a>.
+                </p>
             </div>
 
             <!-- How We Work -->
-            <div class="fade-up fade-up-delay-4">
+            <div class="fade-up fade-up-delay-5">
                 <div class="bg-white rounded-lg border border-gray-200 p-8 md:p-12 text-center max-w-3xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">How We Work</h2>
                     <div class="section-divider mx-auto mb-8"></div>
                     <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                        We're a small practice - and that's by design. It means you get senior-level expertise without the big-firm overheads. We work flexibly around your needs, whether that's a one-off project or ongoing support.
+                        We are a small, senior team - and that is by design. You get people who have done this work before, without the big-firm overheads, and where a job needs something outside our own bench we bring in the right specialist rather than pretending we do everything. We work flexibly around your needs, whether that is a one-off project or ongoing support.
                     </p>
                     <div class="grid sm:grid-cols-3 gap-6 mt-8">
                         <div>
@@ -202,8 +357,8 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                                 </svg>
                             </div>
-                            <h3 class="font-semibold text-gray-900 mb-1 text-sm">Have a Korero</h3>
-                            <p class="text-gray-500 text-xs">We start with a conversation to understand what you need.</p>
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm">Have a Kōrero</h3>
+                            <p class="text-gray-500 text-xs">We start with a conversation to understand what you need and what matters to your kaupapa.</p>
                         </div>
                         <div>
                             <div class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -212,7 +367,7 @@
                                 </svg>
                             </div>
                             <h3 class="font-semibold text-gray-900 mb-1 text-sm">Simple Plan</h3>
-                            <p class="text-gray-500 text-xs">We agree on what needs doing and how we'll do it together.</p>
+                            <p class="text-gray-500 text-xs">We agree on what needs doing, how, and what it costs.</p>
                         </div>
                         <div>
                             <div class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -224,6 +379,19 @@
                             <p class="text-gray-500 text-xs">We roll up our sleeves and get the work done - no fuss.</p>
                         </div>
                     </div>
+
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Every price is fixed and agreed before we start, and we never bill by the hour. Rather than a list that cannot know your situation, the estimator asks a few questions, then emails you a figure broken down line by line.
+                        </p>
+                        <p class="text-gray-900 leading-relaxed mb-4">
+                            Our prices exclude GST, and exclude travel and accommodation. Where the work needs us on site, travel is charged at cost on top of the fee and agreed with you in writing beforehand.
+                        </p>
+                        <a href="/estimator.html" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+                            Work out your price
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -231,7 +399,7 @@
     </section>
 
     <!-- Who We Help -->
-    <section class="py-12 md:py-16 bg-white">
+    <section id="who-we-help" class="py-12 md:py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up fade-up-delay-5">
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Who We Help</h2>
             <div class="section-divider mx-auto mb-8"></div>
@@ -254,7 +422,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-gray-900 mb-2">Community & Social Sector Organisations</h3>
+                    <h3 class="font-semibold text-gray-900 mb-2">Community &amp; Social Sector Organisations</h3>
                     <p class="text-gray-500 text-sm">Charities, social service providers, and community groups who need help with finances, accreditation, and running things well.</p>
                 </div>
             </div>
@@ -264,9 +432,9 @@
     <!-- Get in touch CTA -->
     <section class="py-12 bg-primary-50 border-t border-primary-100">
         <div class="max-w-2xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold text-gray-900 mb-3">Ready to have a korero?</h2>
-            <p class="text-gray-600 mb-6">Tell us a bit about your organisation and what you need help with. We'll get back to you promptly.</p>
-            <a href="/product.html#contact" class="inline-flex items-center gap-2 px-8 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">Ready To Have A Kōrero?</h2>
+            <p class="text-gray-600 mb-6">Tell us a bit about your organisation and what you need help with. We will get back to you promptly.</p>
+            <a href="/contact.html" class="inline-flex items-center gap-2 px-8 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
                 Get in touch
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -277,5 +445,33 @@
 
     <!-- Component Loader -->
     <script src="js/componentLoader.js?v=1"></script>
+
+    <!-- Page Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            const sections = Array.from(navLinks)
+                .map(link => document.querySelector(link.getAttribute('href')))
+                .filter(Boolean);
+
+            function highlightNavOnScroll() {
+                const scrollPosition = window.scrollY;
+                let currentId = null;
+
+                sections.forEach(section => {
+                    if (scrollPosition >= section.offsetTop - 100) {
+                        currentId = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+                });
+            }
+
+            window.addEventListener('scroll', highlightNavOnScroll);
+            highlightNavOnScroll();
+        });
+    </script>
 </body>
 </html>

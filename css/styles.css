@@ -1,3 +1,42 @@
+/* ==========================================================================
+   Manaaki Tech design system
+   Thesis: the practice shows its working - published rates, line-by-line
+   breakdowns, plain answers. The design should read like well-set
+   documentation: precise, quiet, structured, undecorated.
+   ========================================================================== */
+
+:root {
+  --ink:        #1A1614;   /* warm near-black, not a cold grey */
+  --ink-soft:   #5C534C;
+  --paper:      #F7F4F0;   /* the existing ground, kept */
+  --rule:       #E4DCD2;   /* warm hairline, replaces cold gray-200 */
+  --rule-firm:  #C9BEB2;
+  --terracotta: #A84536;   /* the one CTA colour */
+  --terracotta-deep: #8B3228;
+  --teal-deep:  #1F4A4D;   /* hero ground */
+  --teal-mid:   #5F9EA0;
+  --gold:       #B8860B;   /* accent only, never a button */
+  --display: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --body:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  --utility: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+/* Headings carry the personality; body stays neutral and readable.
+   Archivo sets denser than Inter at the same weight and has a larger
+   x-height, so it needs less weight, looser tracking and more leading than
+   Tailwind's defaults, which are tuned for Inter. The [class] selector is
+   here to out-specify Tailwind's font-bold / text-5xl utilities. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--display);
+  letter-spacing: -0.01em;
+}
+:is(h1, h2, h3, h4, h5, h6)[class] { font-weight: 600; }
+
+h1, h1[class] { letter-spacing: -0.018em; line-height: 1.14; }
+h2, h2[class] { letter-spacing: -0.012em; line-height: 1.22; }
+h3, h4, h5, h6 { letter-spacing: -0.006em; }
+
+
 /* Custom styles beyond Tailwind CSS */
 
 /* Smooth scrolling for anchor links */
@@ -12,32 +51,9 @@ body {
 }
 
 /* Custom focus styles for accessibility */
-:focus {
-  outline: 2px solid #a84536;
+:focus-visible {
+  outline: 2px solid var(--terracotta);
   outline-offset: 2px;
-}
-
-/* Enhanced hero text panel for accessibility */
-.hero-text-panel {
-  /* Ensures minimum contrast ratio of 7:1 (WCAG AAA) */
-  background-color: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* Improved text shadow for better readability */
-.hero-text-panel h1 {
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
-}
-
-.hero-text-panel p {
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-}
-
-/* Enhanced hero brand name styling */
-.hero-brand-name {
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
 }
 
 /* Shared button classes */
@@ -53,31 +69,32 @@ body {
   overflow: hidden;
 }
 
-.btn:focus {
-  outline: 3px solid #c4850a;
+.btn:focus-visible {
+  outline: 3px solid var(--terracotta);
   outline-offset: 2px;
 }
 
 .btn-primary {
-  background-color: #b8860b;
+  background-color: var(--terracotta);
   color: #ffffff;
 }
 .btn-primary:hover {
-  background-color: #9a6e09;
+  background-color: var(--terracotta-deep);
 }
 
 .btn-outline {
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--rule-firm);
   background-color: transparent;
 }
 .btn-outline:hover {
-  background-color: #f9fafb;
+  background-color: #ffffff;
+  border-color: var(--terracotta);
 }
 
 .card {
   background-color: #ffffff;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  border: 1px solid var(--rule);
   padding: 1.5rem;
 }
 
@@ -87,23 +104,16 @@ body {
   overflow: hidden;
   font-weight: 700;
   letter-spacing: 0.025em;
-  background: linear-gradient(135deg, #c4850a 0%, #b8860b 100%);
-  box-shadow:
-    0 20px 25px -5px rgba(184, 134, 11, 0.25),
-    0 10px 10px -5px rgba(184, 134, 11, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: var(--terracotta);
+  box-shadow: 0 1px 2px rgba(26, 22, 20, 0.16);
 }
 
 .hero-btn-primary:hover {
-  background: linear-gradient(135deg, #b8860b 0%, #9a6e09 100%);
-  box-shadow:
-    0 25px 35px -5px rgba(184, 134, 11, 0.35),
-    0 15px 15px -5px rgba(184, 134, 11, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: var(--terracotta-deep);
 }
 
 .hero-btn-primary:focus {
-  outline: 3px solid #c4850a;
+  outline: 3px solid var(--terracotta);
   outline-offset: 3px;
 }
 
@@ -114,33 +124,18 @@ body {
   letter-spacing: 0.025em;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow:
-    0 20px 25px -5px rgba(255, 255, 255, 0.1),
-    0 10px 10px -5px rgba(255, 255, 255, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+  border: 1px solid rgba(247, 244, 240, 0.45);
 }
 
 .hero-btn-secondary:hover {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow:
-    0 25px 35px -5px rgba(255, 255, 255, 0.15),
-    0 15px 15px -5px rgba(255, 255, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-color: rgba(247, 244, 240, 0.9);
+  background-color: rgba(247, 244, 240, 0.08);
 }
 
 .hero-btn-secondary:focus {
   outline: 3px solid rgba(255, 255, 255, 0.6);
   outline-offset: 3px;
-}
-
-/* Responsive text panel adjustments */
-@media (max-width: 640px) {
-  .hero-text-panel {
-    padding: 1.5rem;
-    margin: 0 1rem;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
 }
 
 .hero-background {
@@ -322,6 +317,11 @@ input:focus, textarea:focus {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.9);
   }
+
+  /* Reserve space on the right so page content doesn't sit under the floating nav */
+  body:has(.page-nav) {
+    padding-right: 300px;
+  }
 }
 
 /* Product family section */
@@ -340,13 +340,11 @@ input:focus, textarea:focus {
 }
 
 .product-card:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
+  border-color: var(--terracotta);
 }
 
 .product-card.current {
-  border-left: 3px solid;
-  border-image: linear-gradient(to bottom, #ffb3b3, #ffd9b3, #ffffb3, #b3ffb3, #b3b3ff, #d9b3ff, #ffb3ff) 1;
+  border-left: 3px solid var(--terracotta);
 }
 
 /* Services page styles */
@@ -354,25 +352,63 @@ input:focus, textarea:focus {
   background-color: #ffffff;
   border-radius: 0.5rem;
   padding: 1.5rem;
-  transition: all 0.3s ease;
-  border: 1px solid #e5e7eb;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  border: 1px solid var(--rule);
 }
 
 .service-card:hover {
-  border-color: #e49e8a;
-  box-shadow: 0 10px 25px -5px rgba(168, 69, 54, 0.1), 0 8px 10px -6px rgba(168, 69, 54, 0.05);
-  transform: translateY(-2px);
+  border-color: var(--terracotta);
+  background-color: #FFFDFB;
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, #2c5d5f 0%, #3d6b50 30%, #7a6535 65%, #b8860b 100%);
+  position: relative;
+  background: var(--teal-deep);
 }
 
-.section-divider {
-  width: 60px;
+/* Eyebrow: the utility face, used for labels across the site. */
+.hero-eyebrow {
+  font-family: var(--utility);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 240, 0.75);
+}
+
+/* The photo hero carries the same base edge, so both hero types read as
+   one system rather than two. */
+.hero-photo { position: relative; }
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
   height: 3px;
-  background: linear-gradient(90deg, #a84536, #d37059);
-  border-radius: 2px;
+  z-index: 20;
+  background: linear-gradient(90deg, var(--terracotta) 0%, #C9713F 55%, var(--gold) 100%);
+}
+/* The palette resolves in a hairline rather than a four-hue sweep. */
+.hero-gradient::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--terracotta) 0%, #C9713F 55%, var(--gold) 100%);
+}
+
+/* Signature element: three nodes joined by a hairline, taken from the
+   whakapapa mark in the logo. Connection is what the name means. */
+.section-divider {
+  width: 116px;
+  height: 8px;
+  border-radius: 0;
+  background-image:
+    radial-gradient(circle at 4px 50%,   var(--terracotta) 3.4px, transparent 3.8px),
+    radial-gradient(circle at 58px 50%,  var(--teal-mid)   3.4px, transparent 3.8px),
+    radial-gradient(circle at 112px 50%, var(--gold)       3.4px, transparent 3.8px),
+    linear-gradient(var(--rule-firm), var(--rule-firm));
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 1px;
+  background-position: 0 0, 0 0, 0 0, 0 50%;
+  background-repeat: no-repeat;
 }
 
 @keyframes fadeUp {

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Estimator | Manaaki Tech</title>
+    <meta name="description" content="Answer a few questions about what you need and we will email you an indicative price, broken down line by line. Covers risk, policies, financial review, budgeting, internal audit, accreditation and CHP registration.">
+
+    <!-- OG + Canonical -->
+    <meta property="og:title" content="Pricing Estimator | Manaaki Tech">
+    <meta property="og:description" content="Answer a few questions about what you need and we will email you an indicative price, broken down line by line.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manaakitech.com/estimator.html">
+    <link rel="canonical" href="https://manaakitech.com/estimator.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind + Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/estimator.css">
+</head>
+
+<body class="bg-[#F7F4F0] text-gray-800">
+
+    <div id="header-component" data-component="header"></div>
+
+    <!-- Hidden form so Netlify detects the estimator enquiry fields at deploy time -->
+    <form name="estimator" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="text" name="org" />
+        <input type="email" name="email" />
+        <textarea name="note"></textarea>
+        <textarea name="estimate"></textarea>
+        <input name="bot-field" />
+    </form>
+
+    <!-- Hero Banner -->
+    <section class="hero-gradient text-white py-12 md:py-16 es-noprint">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-primary-200 text-sm uppercase tracking-widest mb-4 fade-up">Manaaki Tech</p>
+            <h1 class="text-3xl md:text-5xl font-bold mb-6 fade-up fade-up-delay-1">What Would This Cost Us?</h1>
+            <p class="text-lg md:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed fade-up fade-up-delay-2">
+                Pick what you need. We will ask a few pātai about each, then email you an indicative range, broken down line by line.
+            </p>
+        </div>
+    </section>
+
+    <!-- Estimator -->
+    <section class="py-12 md:py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="estimator-root"></div>
+        </div>
+    </section>
+
+    <!-- Get in touch CTA -->
+    <section class="py-12 bg-primary-50 border-t border-primary-100 es-noprint">
+        <div class="max-w-2xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">Would You Rather Just Talk It Through?</h2>
+            <p class="text-gray-600 mb-6">The estimator is how we put together a firm quote and email it to you. If it is easier to explain your situation than to answer questions about it, have a kōrero with us instead. The first conversation is free.</p>
+            <a href="/contact.html" class="inline-flex items-center gap-2 px-8 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
+                Get in touch
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <p class="text-sm text-gray-500 mt-6">
+                For the rules behind these numbers, see <a href="/pricing.html" class="text-primary-600 hover:text-primary-800 underline">Our Approach</a>.
+            </p>
+        </div>
+    </section>
+
+    <div id="footer-component" data-component="footer"></div>
+
+    <!-- Component Loader -->
+    <script src="js/componentLoader.js?v=1"></script>
+    <script src="js/estimator.js?v=1"></script>
+</body>
+</html>
