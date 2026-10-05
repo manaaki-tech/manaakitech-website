@@ -1581,6 +1581,41 @@
     return out.join('\n');
   }
 
+  /* The full question-and-answer trail, for the notification email: every
+     question they were shown, the choices offered, and what they picked or
+     typed. The estimate field carries the numbers; this carries the why. */
+  function buildAnswerTrail(selected, a) {
+    var out = [];
+    visibleQuestions(selected, a).forEach(function (q, i) {
+      out.push(i + 1 + '. ' + q.q);
+
+      if (q.number) {
+        var n = a[q.id];
+        out.push(
+          '   They entered: ' +
+          (n === '' || n == null ? '(not answered)' : n + (q.suffix ? ' ' + q.suffix : ''))
+        );
+        out.push('');
+        return;
+      }
+
+      out.push(
+        '   Choices offered: ' +
+        q.options.map(function (o) { return o.label; }).join(' / ')
+      );
+
+      var v = a[q.id];
+      var chosen = q.options
+        .filter(function (o) {
+          return q.multi ? Array.isArray(v) && v.indexOf(o.v) !== -1 : o.v === v;
+        })
+        .map(function (o) { return o.label; });
+      out.push('   They chose: ' + (chosen.length ? chosen.join(', ') : '(not answered)'));
+      out.push('');
+    });
+    return out.join('\n');
+  }
+
   /* -------------------------------- view --------------------------- */
 
   var root = document.getElementById('estimator-root');
@@ -1846,7 +1881,8 @@
       note: state.details.note,
       estimate: state.result
         ? buildSummary(state.selected, state.result)
-        : 'No estimate was generated.'
+        : 'No estimate was generated.',
+      answers: buildAnswerTrail(state.selected, state.answers)
     }).toString();
 
     state.sending = true;
