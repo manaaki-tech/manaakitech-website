@@ -1705,8 +1705,12 @@
           '<p class="es-q"><span class="es-qnum">' + (i + 1) + '</span>' + esc(q.q) + '</p>' +
           (q.hint ? '<p class="es-hint">' + esc(q.hint) + '</p>' : '') +
           '<div class="es-numberwrap">' +
-          '<input class="es-number" type="number" inputmode="numeric"' +
-          ' min="' + (q.min || 1) + '" max="' + (q.max || 999) + '"' +
+          /* type="text" rather than "number": number inputs do not allow
+             setSelectionRange, which render() needs to keep the caret at
+             the end after each re-render. inputmode still gives phones a
+             numeric keyboard, and the input handler parses out anything
+             that is not a count. */
+          '<input class="es-number" type="text" inputmode="numeric"' +
           ' data-num="' + esc(q.id) + '" data-fk="n:' + esc(q.id) + '"' +
           ' aria-label="' + esc(q.q) + '"' +
           ' placeholder="' + esc(q.placeholder || '') + '"' +
@@ -1832,7 +1836,14 @@
 
     if (focusKey) {
       var el = root.querySelector('[data-fk="' + focusKey + '"]');
-      if (el) el.focus();
+      if (el) {
+        el.focus();
+        /* A freshly created input starts with the caret at position 0,
+           which made typing a count come out backwards. Put it at the end. */
+        if (el.tagName === 'INPUT' && el.setSelectionRange) {
+          el.setSelectionRange(el.value.length, el.value.length);
+        }
+      }
     }
   }
 
