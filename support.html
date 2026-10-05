@@ -53,7 +53,7 @@
                     Support Centre
                 </h1>
                 <p class="text-xl text-gray-500 max-w-3xl mx-auto">
-                    We are here to help you get the most out of Manaaki Central. Find answers to common questions or contact our support team.
+                    We are here to help, whether you use Manaaki Central or work with us on the consulting side. Find answers to common questions or contact our support team.
                 </p>
             </div>
 
@@ -61,7 +61,18 @@
             <div class="mb-20" id="faq">
                 <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
 
-                <div class="max-w-4xl mx-auto" x-data="{selected:null}">
+                <div class="max-w-4xl mx-auto space-y-6">
+
+                    <!-- Group: Manaaki Central -->
+                    <div x-data="{ open: false }">
+                        <button @click="open = !open" class="flex justify-between items-center w-full p-5 bg-primary-600 text-white rounded-lg shadow-md hover:bg-primary-700 transition-colors" :aria-expanded="open">
+                            <span class="text-xl font-bold text-left">Manaaki Central - Case Management Software</span>
+                            <svg class="w-6 h-6 flex-shrink-0 ml-4" :class="{'transform rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        <div x-show="open" class="mt-4" x-data="{selected:null}" style="display: none;">
                     <!-- FAQ Item 1 -->
                     <div class="mb-4">
                         <button
@@ -222,6 +233,176 @@
                             <p class="text-gray-600 mt-3">
                                 Professional and Enterprise plans offer more extensive customisation options, and our team can provide guidance on best practices for configuring the system to match your organisation's processes.
                             </p>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+                    <!-- Group: Consulting Services -->
+                    <div x-data="{ open: false }">
+                        <button @click="open = !open" class="flex justify-between items-center w-full p-5 bg-primary-600 text-white rounded-lg shadow-md hover:bg-primary-700 transition-colors" :aria-expanded="open">
+                            <span class="text-xl font-bold text-left">Consulting Services</span>
+                            <svg class="w-6 h-6 flex-shrink-0 ml-4" :class="{'transform rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        <div x-show="open" class="mt-4" x-data="{selected:null}" style="display: none;">
+                            <!-- Consulting FAQ 1 -->
+                            <div class="mb-4">
+                                <button
+                                    @click="selected !== 1 ? selected = 1 : selected = null"
+                                    class="flex justify-between items-center w-full p-5 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                                    :class="{'bg-primary-50 border-l-4 border-primary-500': selected === 1}"
+                                >
+                                    <span class="text-lg font-semibold text-gray-900">Who do you work with?</span>
+                                    <svg class="w-5 h-5 text-gray-500" :class="{'transform rotate-180': selected === 1}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div
+                                    x-show="selected === 1"
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 transform -translate-y-4"
+                                    x-transition:enter-end="opacity-100 transform translate-y-0"
+                                    class="p-5 bg-white border-l border-r border-b rounded-b-lg shadow-md"
+                                >
+                                    <p class="text-gray-600">
+                                        Small businesses, charities, social service providers, and community groups across New Zealand - the kind of organisations doing important mahi without a full finance team behind them. We are deliberately small and deliberately senior, so you deal with experienced people throughout, and where a job needs a specialist we are not, we bring in the right one.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Consulting FAQ 2 -->
+                            <div class="mb-4">
+                                <button
+                                    @click="selected !== 2 ? selected = 2 : selected = null"
+                                    class="flex justify-between items-center w-full p-5 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                                    :class="{'bg-primary-50 border-l-4 border-primary-500': selected === 2}"
+                                >
+                                    <span class="text-lg font-semibold text-gray-900">How do you charge?</span>
+                                    <svg class="w-5 h-5 text-gray-500" :class="{'transform rotate-180': selected === 2}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div
+                                    x-show="selected === 2"
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 transform -translate-y-4"
+                                    x-transition:enter-end="opacity-100 transform translate-y-0"
+                                    class="p-5 bg-white border-l border-r border-b rounded-b-lg shadow-md"
+                                >
+                                    <p class="text-gray-600">
+                                        Fixed fees, agreed before we start - we never bill by the hour. Every price says exactly what it covers, and if scope changes we talk about it before the work happens, not afterwards on an invoice. Project work is billed in instalments across the engagement rather than in one lump.
+                                    </p>
+                                    <p class="text-gray-600 mt-3">
+                                        All prices exclude GST, and exclude travel and accommodation. Where the work needs us on site, travel is charged at cost and agreed with you in writing before anything is booked.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Consulting FAQ 3 -->
+                            <div class="mb-4">
+                                <button
+                                    @click="selected !== 3 ? selected = 3 : selected = null"
+                                    class="flex justify-between items-center w-full p-5 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                                    :class="{'bg-primary-50 border-l-4 border-primary-500': selected === 3}"
+                                >
+                                    <span class="text-lg font-semibold text-gray-900">How do we get a price?</span>
+                                    <svg class="w-5 h-5 text-gray-500" :class="{'transform rotate-180': selected === 3}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div
+                                    x-show="selected === 3"
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 transform -translate-y-4"
+                                    x-transition:enter-end="opacity-100 transform translate-y-0"
+                                    class="p-5 bg-white border-l border-r border-b rounded-b-lg shadow-md"
+                                >
+                                    <p class="text-gray-600">
+                                        Use the <a href="/estimator.html" class="text-primary-600 hover:text-primary-800 underline">Consulting Estimator</a>: answer a few questions about what you need and we will email you a quote, broken down line by line. Or if it is easier to talk it through, call <a href="tel:+64272121266" class="text-primary-600 hover:text-primary-800 whitespace-nowrap">027 212 1266</a> or <a href="/contact.html" class="text-primary-600 hover:text-primary-800 underline">get in touch</a> - the first conversation is free.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Consulting FAQ 4 -->
+                            <div class="mb-4">
+                                <button
+                                    @click="selected !== 4 ? selected = 4 : selected = null"
+                                    class="flex justify-between items-center w-full p-5 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                                    :class="{'bg-primary-50 border-l-4 border-primary-500': selected === 4}"
+                                >
+                                    <span class="text-lg font-semibold text-gray-900">Do you do bookkeeping, GST or tax returns?</span>
+                                    <svg class="w-5 h-5 text-gray-500" :class="{'transform rotate-180': selected === 4}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div
+                                    x-show="selected === 4"
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 transform -translate-y-4"
+                                    x-transition:enter-end="opacity-100 transform translate-y-0"
+                                    class="p-5 bg-white border-l border-r border-b rounded-b-lg shadow-md"
+                                >
+                                    <p class="text-gray-600">
+                                        No. Plenty of people do that well and affordably, and we happily work alongside whoever already does yours. Our work is the layer above: reviewing the numbers, explaining what they mean, budgets and cashflow, board reporting, risk, policies, and planning.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Consulting FAQ 5 -->
+                            <div class="mb-4">
+                                <button
+                                    @click="selected !== 5 ? selected = 5 : selected = null"
+                                    class="flex justify-between items-center w-full p-5 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                                    :class="{'bg-primary-50 border-l-4 border-primary-500': selected === 5}"
+                                >
+                                    <span class="text-lg font-semibold text-gray-900">Can you help us get accredited?</span>
+                                    <svg class="w-5 h-5 text-gray-500" :class="{'transform rotate-180': selected === 5}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div
+                                    x-show="selected === 5"
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 transform -translate-y-4"
+                                    x-transition:enter-end="opacity-100 transform translate-y-0"
+                                    class="p-5 bg-white border-l border-r border-b rounded-b-lg shadow-md"
+                                >
+                                    <p class="text-gray-600">
+                                        Yes. We prepare social services organisations for assessment against the Social Sector Accreditation Standards (Te Kāhui Kāhu) and Ngā Paerewa health and disability certification, and we help community housing providers register with the Community Housing Regulatory Authority.
+                                    </p>
+                                    <p class="text-gray-600 mt-3">
+                                        We get you ready for assessment; we do not grant accreditation or issue certification - that stays with the assessing bodies.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Consulting FAQ 6 -->
+                            <div class="mb-4">
+                                <button
+                                    @click="selected !== 6 ? selected = 6 : selected = null"
+                                    class="flex justify-between items-center w-full p-5 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                                    :class="{'bg-primary-50 border-l-4 border-primary-500': selected === 6}"
+                                >
+                                    <span class="text-lg font-semibold text-gray-900">Do we have to commit to ongoing work?</span>
+                                    <svg class="w-5 h-5 text-gray-500" :class="{'transform rotate-180': selected === 6}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div
+                                    x-show="selected === 6"
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 transform -translate-y-4"
+                                    x-transition:enter-end="opacity-100 transform translate-y-0"
+                                    class="p-5 bg-white border-l border-r border-b rounded-b-lg shadow-md"
+                                >
+                                    <p class="text-gray-600">
+                                        No. If a one-off review or project is all you need, that is where it ends - and we will say so if we think you do not need us. Where organisations want us alongside their team week to week, ongoing support starts at ten hours a week, and either side can end the arrangement with a month of notice.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
