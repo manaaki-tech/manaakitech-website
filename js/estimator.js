@@ -1466,13 +1466,27 @@
         'Urgent work is priced for the disruption rather than the hours: it displaces something already booked. Before you commit, tell us the actual date. Sometimes it is achievable at the standard fee with a small change to the sequence, and we would rather find that out than charge you for haste you do not need.'
       );
     }
-    if (combinedF < 1) {
-      factors.push(
-        'Combined engagement, one set of meetings and one report structure, so it costs less than doing these separately'
-      );
-    }
+    /* The combined-engagement saving still applies, but we no longer
+       advertise it on the page - it just makes a multi-service figure
+       quietly sharper. */
 
     var point = subtotal * deadlineF * combinedF;
+
+    if (combinedF < 1) {
+      /* Keep the emailed breakdown summing to the quoted figure. Neutral
+         wording, since the saving is applied but not promoted. */
+      groups.push({
+        id: '_combined',
+        name: 'Combined engagement',
+        lines: [
+          {
+            label: 'Shared onboarding, meetings and reporting across services',
+            amount: Math.round(point - subtotal * deadlineF),
+            fixed: true
+          }
+        ]
+      });
+    }
 
     /* Never quote under our own published prices. The loadings above can
        discount a small job below the "from" figure on the pricing page; the
@@ -1683,9 +1697,6 @@
       '<section class="es-picker es-noprint">' +
       '<p class="es-label">What do you need help with?</p>' +
       '<div class="es-services">' + cards + '</div>' +
-      (state.selected.length > 1
-        ? '<p class="es-combined">Combining services costs less than commissioning them separately, one set of meetings, one report structure.</p>'
-        : '') +
       '</section>'
     );
   }

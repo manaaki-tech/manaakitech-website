@@ -57,8 +57,6 @@
 .es-service-blurb { font-size: 0.875rem; line-height: 1.45; color: #6b7280; }
 .es-service.is-on .es-service-blurb { color: rgba(255, 255, 255, 0.8); }
 .es-check { margin-right: 0.45rem; font-size: 0.75rem; }
-.es-combined { font-size: 0.9375rem; color: #6b7280; margin: 0.875rem 0 0; }
-
 /* --------------------------------- progress ------------------------- */
 
 .es-progress {
