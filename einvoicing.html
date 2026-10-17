@@ -109,6 +109,25 @@
             color: #fff;
         }
         .einv-banner a { color: #fff; text-decoration: underline; }
+        .einv-banner { background-color: #A84536; position: relative; border-bottom: 4px solid #F2B84B; box-shadow: 0 6px 16px rgba(0,0,0,0.18); }
+        .einv-banner-badge {
+            display: inline-flex; align-items: center; gap: 0.375rem;
+            background: #F2B84B; color: #1f2937; font-weight: 700;
+            font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase;
+            padding: 0.125rem 0.625rem; border-radius: 9999px; margin-bottom: 0.375rem;
+        }
+        .einv-banner-badge::before {
+            content: ""; width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #b45309;
+            animation: einv-pulse 1.6s ease-in-out infinite;
+        }
+        @keyframes einv-pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(1.4); } }
+        @media (prefers-reduced-motion: reduce) { .einv-banner-badge::before { animation: none; } }
+        .einv-banner-close {
+            position: absolute; top: 0.5rem; right: 0.75rem; padding: 0.375rem; border-radius: 9999px;
+            color: #fff; background: rgba(255,255,255,0.15); line-height: 0; cursor: pointer;
+        }
+        .einv-banner [data-einv-banner] { padding-right: 3rem; }
+        .einv-banner-close:hover { background: rgba(255,255,255,0.3); }
 
         /* Included / not-included lists. */
         .einv-tick,
@@ -201,10 +220,23 @@
                 if (b) { b.hidden = useA; }
             }
 
+            /* Close button: hide the banner for this visit. */
+            function setupClose() {
+                var banner = document.getElementById('einv-banner');
+                var btn = document.getElementById('einv-banner-close');
+                if (!banner || !btn) { return; }
+                try { if (sessionStorage.getItem('einvBannerClosed')) { banner.hidden = true; } } catch (e) {}
+                btn.addEventListener('click', function () {
+                    banner.hidden = true;
+                    try { sessionStorage.setItem('einvBannerClosed', '1'); } catch (e) {}
+                });
+            }
+
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', render);
+                document.addEventListener('DOMContentLoaded', function () { render(); setupClose(); });
             } else {
                 render();
+                setupClose();
             }
         })();
     </script>
@@ -212,10 +244,11 @@
     <div>
 
         <!-- Deadline banner -->
-        <section class="einv-banner">
+        <section class="einv-banner" id="einv-banner" role="region" aria-label="E-invoicing deadline notice">
             <!-- BANNER A: until 30 October 2026 inclusive -->
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4" data-einv-banner="A" hidden>
-                <p class="font-semibold text-sm md:text-base">
+                <span class="einv-banner-badge">Deadline</span>
+                <p class="font-bold text-base md:text-lg">
                     Large UAE businesses must appoint an Accredited Service Provider by <span data-einv="asp_deadline_large"></span>.
                 </p>
                 <p class="text-sm mt-1 text-white/90">
@@ -225,13 +258,17 @@
 
             <!-- BANNER B: from 31 October 2026 -->
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4" data-einv-banner="B" hidden>
-                <p class="font-semibold text-sm md:text-base">
+                <span class="einv-banner-badge">Important</span>
+                <p class="font-bold text-base md:text-lg">
                     Mandatory e-invoicing starts on <span data-einv="golive_large"></span> for UAE businesses with annual revenue of <span data-einv="revenue_threshold"></span> or more.
                 </p>
                 <p class="text-sm mt-1 text-white/90">
                     Businesses below that threshold must appoint a provider by <span data-einv="asp_deadline_other"></span> and go live on <span data-einv="golive_other"></span>. <a href="#enquire">Start your readiness work now</a>.
                 </p>
             </div>
+            <button type="button" class="einv-banner-close" id="einv-banner-close" aria-label="Close notice">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
         </section>
 
         <!-- Hero -->
