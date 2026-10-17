@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Invoicing in the UAE | Manaaki Tech</title>
+    <meta name="description" content="Mandatory UAE e-invoicing starts 1 January 2027 for businesses with annual revenue of AED 50 million or more. We help UAE businesses understand the rules, choose a route, and get ready and tested before their deadline.">
+
+    <!-- OG + Canonical -->
+    <meta property="og:title" content="E-Invoicing in the UAE | Manaaki Tech">
+    <meta property="og:description" content="Mandatory UAE e-invoicing starts 1 January 2027 for businesses with annual revenue of AED 50 million or more. We help UAE businesses understand the rules, choose a route, and get ready and tested before their deadline.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manaakitech.com/einvoicing.html">
+    <link rel="canonical" href="https://manaakitech.com/einvoicing.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind + Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- Alpine.js: used by the shared header's mobile menu -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* ------------------------------------------------------------------
+           ACCENT COLOUR FOR THIS PAGE ONLY
+           Change the one value below to re-tint every accent on this page
+           (eyebrow, table headers, step numbers, rules). It is deliberately
+           the only colour knob here. Terracotta stays the button colour,
+           as it is site-wide.
+           ------------------------------------------------------------------ */
+        :root {
+            --einv-accent: #1F4A4D;        /* deep teal, from the house palette */
+            --einv-accent-soft: #E8EFEF;   /* tint for table headers and panels */
+            --einv-accent-rule: #C4D6D6;   /* hairline on tinted panels */
+        }
+
+        .einv-eyebrow {
+            font-family: var(--utility);
+            font-size: 0.6875rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        /* Tables: the page is mostly dates and amounts, so they get a
+           documentation-style treatment rather than cards. */
+        .einv-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+        .einv-table caption { text-align: left; }
+        .einv-table th,
+        .einv-table td {
+            text-align: left;
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--rule);
+            vertical-align: top;
+        }
+        .einv-table thead th {
+            background-color: var(--einv-accent-soft);
+            border-bottom: 1px solid var(--einv-accent-rule);
+            color: var(--einv-accent);
+            font-family: var(--utility);
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .einv-table tbody tr:last-child td { border-bottom: none; }
+        .einv-table .einv-num {
+            font-family: var(--utility);
+            white-space: nowrap;
+        }
+        .einv-table-wrap {
+            background: #fff;
+            border: 1px solid var(--rule);
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+
+        /* Numbered requirement / step markers. */
+        .einv-step-num {
+            flex-shrink: 0;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--einv-accent);
+            color: #fff;
+            font-family: var(--utility);
+            font-size: 0.8125rem;
+            font-weight: 500;
+        }
+
+        /* Deadline banner. */
+        .einv-banner {
+            background-color: var(--einv-accent);
+            color: #fff;
+        }
+        .einv-banner a { color: #fff; text-decoration: underline; }
+
+        /* Included / not-included lists. */
+        .einv-tick,
+        .einv-cross { flex-shrink: 0; width: 1.125rem; height: 1.125rem; margin-top: 0.1875rem; }
+        .einv-tick { color: var(--einv-accent); }
+        .einv-cross { color: var(--rule-firm); }
+    </style>
+</head>
+
+<body class="bg-[#F7F4F0] text-gray-800">
+
+    <div id="header-component" data-component="header"></div>
+
+    <!-- ======================================================================
+         ALL DATES AND AMOUNTS FOR THIS PAGE LIVE IN ONE PLACE: the object
+         below. Edit a value here and it updates everywhere it appears on the
+         page, including the banner, the key-dates table and the penalties
+         table. Do not retype these figures into the copy itself.
+         ====================================================================== -->
+    <script>
+        /* The single source of truth for every date and amount on this page.
+           Edit a value here and it updates everywhere it appears. The renderer
+           below is plain inline JavaScript on purpose: these figures must not
+           depend on a third-party CDN script loading. */
+        var EINVOICING = {
+            /* --- Deadlines ------------------------------------------- */
+            asp_deadline_large: "30 October 2026",
+            golive_large:       "1 January 2027",
+            asp_deadline_other: "31 March 2027",
+            golive_other:       "1 July 2027",
+            golive_gov:         "1 October 2027",
+            voluntary_from:     "1 July 2026",
+
+            /* --- Revenue threshold ----------------------------------- */
+            revenue_threshold:  "AED 50 million",
+
+            /* --- Timing rules ---------------------------------------- */
+            issue_window:       "14 days",
+            failure_notice:     "2 business days",
+            reply_window:       "2 working days",
+            findings_window:    "2 working days",
+            data_field_count:   "more than 50",
+
+            /* --- Penalties (Cabinet Decision No. 106 of 2025) -------- */
+            penalty_no_asp:            "AED 5,000",
+            penalty_invoice_each:      "AED 100",
+            penalty_invoice_cap:       "AED 5,000",
+            penalty_failure_daily:     "AED 1,000",
+            penalty_data_change_daily: "AED 1,000",
+
+            /* --- Page currency --------------------------------------- */
+            facts_asof: "17 October 2026",
+
+            /* --- Banner switch ---------------------------------------
+               Banner A shows up to and including 30 October 2026 (UAE time).
+               Banner B shows from 31 October 2026. Change the timestamp
+               below to move the switch. */
+            banner_switch_end: "2026-10-30T23:59:59+04:00"
+        };
+
+        (function () {
+            function render() {
+                var d = EINVOICING, i, el, nodes;
+
+                /* Plain value: <span data-einv="golive_large"></span> */
+                nodes = document.querySelectorAll('[data-einv]');
+                for (i = 0; i < nodes.length; i++) {
+                    el = nodes[i];
+                    if (d[el.getAttribute('data-einv')] !== undefined) {
+                        el.textContent = d[el.getAttribute('data-einv')];
+                    }
+                }
+
+                /* Sentence with values substituted in:
+                   data-einv-tpl="{penalty_no_asp} for each month..." */
+                nodes = document.querySelectorAll('[data-einv-tpl]');
+                for (i = 0; i < nodes.length; i++) {
+                    el = nodes[i];
+                    el.textContent = el.getAttribute('data-einv-tpl').replace(
+                        /\{(\w+)\}/g,
+                        function (m, k) { return d[k] !== undefined ? d[k] : m; }
+                    );
+                }
+
+                /* Show Banner A up to the switch date, Banner B after it. */
+                var useA = new Date() <= new Date(d.banner_switch_end);
+                var a = document.querySelector('[data-einv-banner="A"]');
+                var b = document.querySelector('[data-einv-banner="B"]');
+                if (a) { a.hidden = !useA; }
+                if (b) { b.hidden = useA; }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', render);
+            } else {
+                render();
+            }
+        })();
+    </script>
+
+    <div>
+
+        <!-- Deadline banner -->
+        <section class="einv-banner">
+            <!-- BANNER A: until 30 October 2026 inclusive -->
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4" data-einv-banner="A" hidden>
+                <p class="font-semibold text-sm md:text-base">
+                    Large UAE businesses must appoint an Accredited Service Provider by <span data-einv="asp_deadline_large"></span>.
+                </p>
+                <p class="text-sm mt-1 text-white/90">
+                    Mandatory e-invoicing starts on <span data-einv="golive_large"></span> for businesses with annual revenue of <span data-einv="revenue_threshold"></span> or more. If you have not yet appointed a provider, <a href="#enquire">speak to us this week</a>.
+                </p>
+            </div>
+
+            <!-- BANNER B: from 31 October 2026 -->
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4" data-einv-banner="B" hidden>
+                <p class="font-semibold text-sm md:text-base">
+                    Mandatory e-invoicing starts on <span data-einv="golive_large"></span> for UAE businesses with annual revenue of <span data-einv="revenue_threshold"></span> or more.
+                </p>
+                <p class="text-sm mt-1 text-white/90">
+                    Businesses below that threshold must appoint a provider by <span data-einv="asp_deadline_other"></span> and go live on <span data-einv="golive_other"></span>. <a href="#enquire">Start your readiness work now</a>.
+                </p>
+            </div>
+        </section>
+
+        <!-- Hero -->
+        <section class="hero-gradient text-white py-12 md:py-16">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="einv-eyebrow text-white/75 mb-4 fade-up">United Arab Emirates</p>
+                <h1 class="text-3xl md:text-5xl font-bold mb-6 fade-up fade-up-delay-1">E-Invoicing in the UAE</h1>
+                <p class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed fade-up fade-up-delay-2">
+                    Be ready for mandatory e-invoicing before your deadline, with clear advice on what the law requires and what your business must change.
+                </p>
+                <p class="text-base text-white/80 max-w-3xl mx-auto leading-relaxed mt-5 fade-up fade-up-delay-2">
+                    The UAE is replacing paper and PDF tax invoices with structured, government-connected e-invoices. Manaaki Tech helps UAE businesses understand the rules that apply to them, choose the right route, and get their invoicing process ready and tested.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 fade-up fade-up-delay-3">
+                    <a href="#enquire" class="inline-flex items-center gap-2 px-8 py-3 bg-white text-primary-700 font-semibold rounded-lg hover:bg-primary-50 transition-colors">
+                        Book a readiness conversation
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#key-dates" class="text-white/90 hover:text-white underline font-medium">See the key dates</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: Key dates -->
+        <section id="key-dates" class="py-12 md:py-16 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Key Dates</h2>
+                <div class="section-divider mb-5"></div>
+                <p class="text-gray-600 leading-relaxed mb-8">
+                    Your deadline depends on your annual revenue. Revenue from business-to-consumer sales counts when you work out which group you are in.
+                </p>
+
+                <div class="einv-table-wrap">
+                    <table class="einv-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Your business</th>
+                                <th scope="col">Appoint an Accredited Service Provider by</th>
+                                <th scope="col">Mandatory e-invoicing from</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium text-gray-900">Annual revenue of <span data-einv="revenue_threshold"></span> or more</td>
+                                <td class="einv-num" data-einv="asp_deadline_large"></td>
+                                <td class="einv-num" data-einv="golive_large"></td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-gray-900">Annual revenue below <span data-einv="revenue_threshold"></span></td>
+                                <td class="einv-num" data-einv="asp_deadline_other"></td>
+                                <td class="einv-num" data-einv="golive_other"></td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-gray-900">Government entities</td>
+                                <td class="einv-num" data-einv="asp_deadline_other"></td>
+                                <td class="einv-num" data-einv="golive_gov"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mt-6 text-sm">
+                    Any business may start voluntarily from <span data-einv="voluntary_from"></span>. Administrative penalties apply from your mandatory date, not before.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Does this apply to you? -->
+        <section class="py-12 md:py-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Does This Apply To You?</h2>
+                <div class="section-divider mb-5"></div>
+                <p class="text-gray-600 leading-relaxed mb-8">
+                    E-invoicing applies to every person conducting business in the UAE, whether or not you are registered for VAT, unless you or the transaction is specifically excluded.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-4">In scope now</h3>
+                        <ul class="space-y-3">
+                            <li class="flex gap-3">
+                                <svg class="einv-tick" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Business-to-business (B2B) transactions</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-tick" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Business-to-government (B2G) transactions</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-4">Outside the mandate for now</h3>
+                        <ul class="space-y-3">
+                            <li class="flex gap-3">
+                                <svg class="einv-cross" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Business-to-consumer (B2C) transactions. A business that deals only with consumers is not required to comply until the Minister of Finance issues a further decision.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-cross" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Financial services that are VAT-exempt or zero-rated</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-cross" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Sovereign activities of government entities that do not compete with the private sector</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-cross" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">International passenger transport supported by electronic tickets, and related airline services</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-cross" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">International goods transport supported by an air waybill, for a temporary period of 24 months</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mt-8">
+                    A business that is excluded can still choose to adopt e-invoicing voluntarily. If it does, it must follow the rules but is not subject to the administrative penalties.
+                </p>
+                <p class="text-gray-900 font-medium leading-relaxed mt-4">
+                    Not sure which group you fall into? That is the first question we answer in a <a href="#enquire" class="text-primary-700 underline hover:text-primary-800">readiness conversation</a>.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: What the law requires -->
+        <section class="py-12 md:py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">What The Law Requires</h2>
+                <div class="section-divider mb-5"></div>
+                <p class="text-gray-600 leading-relaxed mb-10">
+                    These are the mandatory requirements for businesses within scope.
+                </p>
+
+                <div class="space-y-8">
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">1</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Appoint an Accredited Service Provider (ASP).</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">You cannot connect to the government system directly. Every in-scope business must appoint a provider accredited by the Ministry of Finance, and must complete onboarding through the Federal Tax Authority&#39;s EmaraTax portal.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">2</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Issue structured e-invoices, not PDFs.</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Invoices and credit notes must be issued in a structured electronic format (XML or JSON) that follows the UAE version of the Peppol standard, known as PINT AE. A PDF or paper invoice is no longer a valid tax invoice for in-scope transactions.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">3</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Capture every mandatory data field.</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Each e-invoice and e-credit note must carry all of the data fields prescribed by the Ministry of Finance, which is <span data-einv="data_field_count"></span> fields in the UAE data dictionary. This includes seller and buyer Tax Registration Numbers, a unique invoice identifier, the issue date and time, the tax breakdown, and the invoice type. An invoice with missing or incorrect fields is rejected by the provider and must be corrected and resubmitted.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">4</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Use the five-corner exchange model.</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">The invoice moves from your system to your provider, across the Peppol network to your customer&#39;s provider, and on to your customer. Your provider also reports the required tax data to the Federal Tax Authority. You do not send invoices to the Authority yourself.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">5</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Issue and transmit on time.</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">E-invoices and e-credit notes must be issued and transmitted through the system within your VAT timelines, and in all cases within <span data-einv="issue_window"></span> of the date of the transaction.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">6</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Treat credit notes the same way.</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Credit notes must also be issued electronically, through the same system, with the same data discipline.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">7</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Store your data in the UAE.</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">Invoice and credit note data must be stored within the UAE in a way that preserves integrity and allows the Federal Tax Authority to retrieve it.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">8</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Report system failures within <span data-einv="failure_notice"></span>.</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">If a system failure stops you from complying, you must notify the Federal Tax Authority within <span data-einv="failure_notice"></span>.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">9</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Keep your registered details current.</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">If your registered business data changes, your provider must be told within the prescribed time. Master data is now a compliance matter, not an administrative one.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: What non-compliance costs -->
+        <section class="py-12 md:py-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">What Non-Compliance Costs</h2>
+                <div class="section-divider mb-5"></div>
+                <p class="text-gray-600 leading-relaxed mb-8">
+                    Administrative penalties are set by Cabinet Decision No. 106 of 2025 and apply to businesses within the mandatory scope.
+                </p>
+
+                <div class="einv-table-wrap">
+                    <table class="einv-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Failure</th>
+                                <th scope="col">Penalty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-gray-700">Not appointing an ASP and implementing e-invoicing on time</td>
+                                <td class="einv-num text-gray-900" data-einv-tpl="{penalty_no_asp} for each month, or part of a month, of delay"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-gray-700">Not issuing and transmitting an e-invoice on time</td>
+                                <td class="einv-num text-gray-900" data-einv-tpl="{penalty_invoice_each} per invoice, capped at {penalty_invoice_cap} per calendar month"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-gray-700">Not issuing and transmitting an e-credit note on time</td>
+                                <td class="einv-num text-gray-900" data-einv-tpl="{penalty_invoice_each} per credit note, capped at {penalty_invoice_cap} per calendar month"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-gray-700">Not notifying the Federal Tax Authority of a system failure</td>
+                                <td class="einv-num text-gray-900" data-einv-tpl="{penalty_failure_daily} for each day, or part of a day, of delay"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-gray-700">Not telling your provider about changes to registered data</td>
+                                <td class="einv-num text-gray-900" data-einv-tpl="{penalty_data_change_daily} for each day, or part of a day, of delay"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mt-6">
+                    These penalties can apply together. The larger cost is usually operational: a rejected invoice is a delayed payment.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: How Manaaki Tech helps -->
+        <section class="py-12 md:py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">How Manaaki Tech Helps</h2>
+                <div class="section-divider mb-5"></div>
+                <p class="text-gray-600 leading-relaxed mb-10">
+                    Manaaki Tech is an advisory practice. We prepare you, guide the decisions, and oversee the work so that your own team and your chosen provider deliver it correctly. We follow a diagnostic first, then build.
+                </p>
+
+                <div class="space-y-8">
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">1</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Readiness diagnostic</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">We confirm whether and when the mandate applies to you, map your invoice and credit note scenarios (B2B, B2G, recurring, credit notes, advance payments and retentions), and identify the gaps between your current invoices and the UAE data dictionary. You receive a short written findings note, with a recommended route, within <span data-einv="findings_window"></span> of the diagnostic conversation.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">2</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Provider and platform route</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">We start with the accounting or ERP platform you already use, for example Tally Prime or Zoho Books, and work with the e-invoicing partner that platform supports. Where your platform has no workable route, we help you compare accredited providers against your needs, covering integration, support, uptime and commercial terms, before you sign.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">3</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Process and data preparation</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">We guide the changes your team needs to make: customer and supplier Tax Registration Numbers, invoice numbering, credit note workflows, cut-off timing for the <span data-einv="issue_window"></span> rule, data storage, and failure-notification procedures.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">4</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Testing and go-live oversight</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">We oversee test scenarios with your provider, review results, and confirm that you are ready before your mandatory date. We stay close through your first weeks of live invoicing, when most rejections occur.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <span class="einv-step-num">5</span>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Ongoing compliance support (optional)</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">If you want continuing support after go-live, Manaaki Tech arranges and coordinates the accounting and compliance support for you, on your behalf, so you deal with one point of contact.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: What is included and what is not -->
+        <section class="py-12 md:py-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">What Is Included And What Is Not</h2>
+                <div class="section-divider mb-8"></div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-4">Included in our advisory work</h3>
+                        <ul class="space-y-3">
+                            <li class="flex gap-3">
+                                <svg class="einv-tick" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Applicability and deadline assessment</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-tick" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Gap analysis against the UAE data dictionary</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-tick" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Guidance on provider and platform choice</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-tick" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Process, controls and data-readiness guidance</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-tick" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Oversight of testing and go-live readiness</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-4">Not included unless separately agreed in writing</h3>
+                        <ul class="space-y-3">
+                            <li class="flex gap-3">
+                                <svg class="einv-cross" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Acting as an Accredited Service Provider, or issuing or transmitting invoices on your behalf</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-cross" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Software configuration, custom development or integration build (this is delivered by your platform vendor or provider)</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-cross" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Preparing or filing VAT returns</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="einv-cross" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <span class="text-gray-600 text-sm leading-relaxed">Legal advice</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mt-8">
+                    Scope for each engagement is confirmed in writing after the readiness diagnostic. We do not publish a price list. Each engagement is quoted from the work involved.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 7: FAQ -->
+        <section class="py-12 md:py-20 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Frequently Asked Questions</h2>
+                <div class="section-divider mb-8"></div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Does this apply if I am not VAT registered?</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Yes, it can. The mandate applies to persons conducting business in the UAE, not only to VAT registrants, subject to the exclusions above.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Our customers are mostly consumers. Do we need to do anything?</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Business-to-consumer transactions are outside the mandate for now. If you also sell to other businesses or to government, those sales are in scope. Your consumer sales still count towards your revenue when working out your group.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Can I keep sending PDF invoices?</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">For in-scope transactions, no. A PDF or paper invoice is not a valid e-invoice. You may still share a readable copy with your customer in addition to the structured e-invoice.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">Can I submit invoices directly to the Federal Tax Authority?</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">No. Invoices must go through an Accredited Service Provider, which validates them and reports the required data to the Authority.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">We have missed the <span data-einv="asp_deadline_large"></span> appointment date. What now?</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Speak to us immediately. Delay attracts a monthly penalty, so the priority is to appoint a provider and onboard as quickly as a sound decision allows. Do not choose a provider only because it is the first on the list.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h3 class="font-semibold text-gray-900 mb-2">How quickly will you reply to an enquiry?</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">We reply within <span data-einv="reply_window"></span>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION: readiness enquiry -->
+        <section id="enquire" class="py-12 md:py-16 bg-primary-50 border-t border-primary-100">
+            <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 fade-up">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Start With A Readiness Conversation</h2>
+                    <div class="section-divider mb-5 mx-auto"></div>
+                    <p class="text-gray-600 leading-relaxed">
+                        Tell us your annual revenue range, your accounting platform, and roughly how many invoices and credit notes you issue each month. We will confirm which deadline applies and what to do first.
+                    </p>
+                </div>
+
+                <form
+                    name="einvoicing"
+                    method="POST"
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                    action="/thank-you/"
+                    class="bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-primary-100 grid grid-cols-1 gap-y-5"
+                >
+                    <!-- Required for Netlify Forms -->
+                    <input type="hidden" name="form-name" value="einvoicing">
+
+                    <!-- Honeypot field to prevent spam -->
+                    <p class="hidden">
+                        <label>Do not fill this out if you are human: <input name="bot-field" /></label>
+                    </p>
+
+                    <div>
+                        <label for="einv-name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <div class="mt-1">
+                            <input type="text" name="name" id="einv-name" autocomplete="name" required
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="einv-business" class="block text-sm font-medium text-gray-700">Business name</label>
+                        <div class="mt-1">
+                            <input type="text" name="business" id="einv-business" autocomplete="organization" required
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="einv-email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <div class="mt-1">
+                            <input type="email" name="email" id="einv-email" autocomplete="email" required
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="einv-revenue" class="block text-sm font-medium text-gray-700">Annual revenue range</label>
+                        <div class="mt-1">
+                            <select name="revenue" id="einv-revenue" required
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md">
+                                <option value="">Please select</option>
+                                <option value="AED 50 million or more">AED 50 million or more</option>
+                                <option value="Below AED 50 million">Below AED 50 million</option>
+                                <option value="Government entity">Government entity</option>
+                                <option value="Not sure yet">Not sure yet</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="einv-platform" class="block text-sm font-medium text-gray-700">Accounting or ERP platform</label>
+                        <div class="mt-1">
+                            <input type="text" name="platform" id="einv-platform" placeholder="For example Tally Prime, Zoho Books, SAP"
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="einv-volume" class="block text-sm font-medium text-gray-700">Approximate monthly invoices</label>
+                        <div class="mt-1">
+                            <input type="text" name="monthly_invoices" id="einv-volume" placeholder="Invoices and credit notes per month"
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="einv-message" class="block text-sm font-medium text-gray-700">Message <span class="text-gray-400 font-normal">(optional)</span></label>
+                        <div class="mt-1">
+                            <textarea name="message" id="einv-message" rows="4"
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md"></textarea>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
+                            Book a readiness conversation
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <p class="text-xs text-gray-500 text-center mt-3">We reply within <span data-einv="reply_window"></span>.</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer note -->
+        <section class="py-8 bg-[#F7F4F0] border-t border-[#E4DCD2]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    This page is general information about the UAE e-invoicing framework as at <span data-einv="facts_asof"></span> and is not legal or tax advice for your circumstances. Deadlines and requirements are set by the UAE Ministry of Finance and the Federal Tax Authority and may change. Manaaki Tech is an advisory practice and is not an Accredited Service Provider.
+                </p>
+            </div>
+        </section>
+
+    </div><!-- /page data wrapper -->
+
+    <div id="footer-component" data-component="footer"></div>
+
+    <!-- Component Loader -->
+    <script src="js/componentLoader.js?v=1"></script>
+</body>
+</html>
