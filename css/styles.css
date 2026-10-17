@@ -426,3 +426,13 @@ input:focus, textarea:focus {
 .fade-up-delay-3 { animation-delay: 0.3s; }
 .fade-up-delay-4 { animation-delay: 0.4s; }
 .fade-up-delay-5 { animation-delay: 0.5s; }
+
+/* Floating top menu: stays pinned while scrolling */
+#header-component {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+#header-component > header {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+}
